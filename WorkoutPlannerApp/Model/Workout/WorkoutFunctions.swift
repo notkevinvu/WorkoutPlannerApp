@@ -14,9 +14,22 @@ class WorkoutFunctions {
         
     }
     
-    static func readWorkout() {
-        
-    }
+    // the parameter "completion: () -> ()" means that the function gets called when we finish getting data on the background thread
+    // we need to specify that completion is an escaping parameter/closure by adding @escaping to it
+    static func readWorkout(completion: @escaping () -> ()) {
+        // .userInteractive is the highest priority background thread
+        DispatchQueue.global(qos: .userInteractive).async {
+            // if there are no WorkoutModels that exist, create a "fake"/template WorkoutModel to populate the main screen
+            if WorkoutData.workoutModels.count == 0 {
+                WorkoutData.workoutModels.append(WorkoutModel(title: "Back and Biceps"))
+                WorkoutData.workoutModels.append(WorkoutModel(title: "Legs"))
+            }
+            
+            DispatchQueue.main.async {
+                completion()
+            }
+        }
+    } // end readWorkout()
     
     static func updateWorkout(workoutModel: WorkoutModel) {
         
