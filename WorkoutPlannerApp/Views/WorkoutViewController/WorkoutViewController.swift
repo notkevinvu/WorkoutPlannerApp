@@ -12,12 +12,17 @@
 
 import UIKit
 
-class WorkoutViewController: UIViewController {
+class WorkoutViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var workoutTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // these statements tell the table view that we want to use our class as the data source and the delegate
+        // need to add the protocols to class definition
+        workoutTableView.dataSource = self
+        workoutTableView.delegate = self
         
         WorkoutFunctions.readWorkout { [weak self] in
             // the following code is called when the completion function gets called (i.e. after it retrieves data on the background thread
@@ -25,7 +30,20 @@ class WorkoutViewController: UIViewController {
         }
     }
     
+    // configures the table view to show the count of workout models (REQUIRED for UITableViewDataSource)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return WorkoutData.workoutModels.count
+    }
     
+    // tells the table view what kind of cells to show and configures any properties (REQUIRED for UITableViewDataSource)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "workoutCell")
+        
+        cell.textLabel?.text = WorkoutData.workoutModels[indexPath.row].title
+        
+        return cell
+    }
+
     
 
 }
