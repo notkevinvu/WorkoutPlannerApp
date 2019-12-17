@@ -19,6 +19,9 @@ class WorkoutViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "Workouts"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         // these statements tell the table view that we want to use our class as the data source and the delegate
         // need to add the protocols to class definition
         workoutTableView.dataSource = self
