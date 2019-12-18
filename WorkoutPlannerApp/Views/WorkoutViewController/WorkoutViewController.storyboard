@@ -26,13 +26,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z7o-Pr-DTv">
-                                                    <rect key="frame" x="20" y="12" width="374" height="117"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z7o-Pr-DTv">
+                                                    <rect key="frame" x="20" y="11" width="375" height="118"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahU-2U-Gte">
-                                                            <rect key="frame" x="19" y="8" width="337" height="58"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahU-2U-Gte">
+                                                            <rect key="frame" x="19" y="8" width="337" height="59"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="337" id="jY5-Vc-Ori"/>
+                                                                <constraint firstAttribute="width" constant="337" id="qp2-xT-n5X"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -41,17 +41,17 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.071625644820309461" green="0.21221036732611692" blue="0.3430758248730964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="ahU-2U-Gte" firstAttribute="leading" secondItem="z7o-Pr-DTv" secondAttribute="leading" constant="19" id="AMx-JU-8Yn"/>
-                                                        <constraint firstAttribute="bottom" secondItem="ahU-2U-Gte" secondAttribute="bottom" constant="51" id="Dmd-a1-N6O"/>
-                                                        <constraint firstItem="ahU-2U-Gte" firstAttribute="top" secondItem="z7o-Pr-DTv" secondAttribute="topMargin" id="f8U-aW-Hz4"/>
-                                                        <constraint firstItem="ahU-2U-Gte" firstAttribute="centerX" secondItem="z7o-Pr-DTv" secondAttribute="centerX" id="nhc-tg-SXC"/>
+                                                        <constraint firstItem="ahU-2U-Gte" firstAttribute="top" secondItem="z7o-Pr-DTv" secondAttribute="topMargin" id="NdC-5p-fT1"/>
+                                                        <constraint firstItem="ahU-2U-Gte" firstAttribute="centerX" secondItem="z7o-Pr-DTv" secondAttribute="centerX" id="Vca-gq-NGw"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ahU-2U-Gte" secondAttribute="bottom" constant="51" id="lG6-nT-X28"/>
+                                                        <constraint firstItem="ahU-2U-Gte" firstAttribute="leading" secondItem="z7o-Pr-DTv" secondAttribute="leading" constant="19" id="r1E-WP-pA8"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="z7o-Pr-DTv" firstAttribute="bottom" secondItem="4MM-TS-R68" secondAttribute="bottomMargin" id="FLg-DZ-bPU"/>
-                                                <constraint firstItem="z7o-Pr-DTv" firstAttribute="leading" secondItem="4MM-TS-R68" secondAttribute="leadingMargin" id="ufP-qK-5jI"/>
-                                                <constraint firstItem="z7o-Pr-DTv" firstAttribute="centerY" secondItem="4MM-TS-R68" secondAttribute="centerY" id="v4L-ui-0Pz"/>
+                                                <constraint firstItem="z7o-Pr-DTv" firstAttribute="bottom" secondItem="4MM-TS-R68" secondAttribute="bottomMargin" id="WUF-cm-PU8"/>
+                                                <constraint firstItem="z7o-Pr-DTv" firstAttribute="leading" secondItem="4MM-TS-R68" secondAttribute="leadingMargin" id="g4t-Pa-Ww8"/>
+                                                <constraint firstItem="z7o-Pr-DTv" firstAttribute="centerY" secondItem="4MM-TS-R68" secondAttribute="centerY" id="jon-df-5We"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -64,10 +64,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="leading" secondItem="waT-D7-MfC" secondAttribute="leading" id="9Ir-MW-Ah3"/>
-                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="centerX" secondItem="dBP-AW-nQK" secondAttribute="centerX" id="NIh-Wb-vfc"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="pXU-uZ-WSi" secondAttribute="bottom" constant="-34" id="ZGd-PL-K24"/>
-                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="top" secondItem="dBP-AW-nQK" secondAttribute="topMargin" constant="-44" id="qPA-3h-Fzv"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="pXU-uZ-WSi" secondAttribute="bottom" constant="-34" id="LUU-4F-d6l"/>
+                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="centerX" secondItem="dBP-AW-nQK" secondAttribute="centerX" id="rnn-4M-uxl"/>
+                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="leading" secondItem="waT-D7-MfC" secondAttribute="leading" id="sYV-yi-rat"/>
+                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="top" secondItem="dBP-AW-nQK" secondAttribute="topMargin" constant="-44" id="sct-3c-2oi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="waT-D7-MfC"/>
                     </view>

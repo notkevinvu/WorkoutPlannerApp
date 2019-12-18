@@ -36,7 +36,7 @@ class WorkoutFunctions {
     }
     
     // can either pass in the uuid of the model or the whole model itself
-    static func deleteWorkout(id: String) {
+    static func deleteWorkout(id: UUID) {
         
     }
 }
