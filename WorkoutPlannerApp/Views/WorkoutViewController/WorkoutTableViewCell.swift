@@ -26,6 +26,6 @@ class WorkoutTableViewCell: UITableViewCell {
     
     
     func setup(workoutModel: WorkoutModel) {
-        workoutTitleLabel.text = WorkoutModel.title
+        workoutTitleLabel.text = workoutModel.title
     }
 }

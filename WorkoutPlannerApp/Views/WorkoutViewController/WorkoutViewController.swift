@@ -40,11 +40,11 @@ class WorkoutViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // tells the table view what kind of cells to show and configures any properties (REQUIRED for UITableViewDataSource)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "workoutCell") as! WorkoutTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "workoutCell") as! WorkoutTableViewCell
         
-        cell?.textLabel?.text = WorkoutData.workoutModels[indexPath.row].title
+        cell.setup(workoutModel: WorkoutData.workoutModels[indexPath.row])
         
-        return cell!
+        return cell
     }
 
     
