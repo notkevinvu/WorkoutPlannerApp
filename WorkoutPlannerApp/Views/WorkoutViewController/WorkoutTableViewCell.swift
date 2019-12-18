@@ -17,7 +17,15 @@ class WorkoutTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        workoutCardView.layer.shadowOpacity = 1
+        // by default, shadowOffset makes the shadow down and to the right (I think); setting it to 0 gives it zero offset
+        workoutCardView.layer.shadowOffset = CGSize.zero
+        workoutCardView.layer.shadowColor = UIColor.darkGray.cgColor
     }
     
-
+    
+    func setup(workoutModel: WorkoutModel) {
+        workoutTitleLabel.text = WorkoutModel.title
+    }
 }
