@@ -18,6 +18,7 @@
 		E85B5C5A23A7FFC900FCC58A /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B5C5923A7FFC900FCC58A /* WorkoutData.swift */; };
 		E85B5C5E23A928D300FCC58A /* WorkoutViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E85B5C5D23A928D300FCC58A /* WorkoutViewController.storyboard */; };
 		E85B5C6023A9291800FCC58A /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B5C5F23A9291800FCC58A /* WorkoutViewController.swift */; };
+		E8BFB73D23AA655C008B4E88 /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB73C23AA655C008B4E88 /* WorkoutTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		E85B5C5923A7FFC900FCC58A /* WorkoutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
 		E85B5C5D23A928D300FCC58A /* WorkoutViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WorkoutViewController.storyboard; sourceTree = "<group>"; };
 		E85B5C5F23A9291800FCC58A /* WorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
+		E8BFB73C23AA655C008B4E88 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			children = (
 				E85B5C5D23A928D300FCC58A /* WorkoutViewController.storyboard */,
 				E85B5C5F23A9291800FCC58A /* WorkoutViewController.swift */,
+				E8BFB73C23AA655C008B4E88 /* WorkoutTableViewCell.swift */,
 			);
 			path = WorkoutViewController;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				E85B5C2223A7190C00FCC58A /* AppDelegate.swift in Sources */,
 				E85B5C5823A7F9A800FCC58A /* WorkoutFunctions.swift in Sources */,
 				E85B5C2423A7190C00FCC58A /* SceneDelegate.swift in Sources */,
+				E8BFB73D23AA655C008B4E88 /* WorkoutTableViewCell.swift in Sources */,
 				E85B5C5A23A7FFC900FCC58A /* WorkoutData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
