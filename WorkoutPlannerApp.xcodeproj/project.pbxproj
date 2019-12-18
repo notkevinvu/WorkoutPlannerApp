@@ -157,6 +157,7 @@
 		E85B5C5B23A9289200FCC58A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E8BFB73E23AAAECC008B4E88 /* ExerciseViewController */,
 				E85B5C5C23A9289F00FCC58A /* WorkoutViewController */,
 			);
 			path = Views;
@@ -170,6 +171,13 @@
 				E8BFB73C23AA655C008B4E88 /* WorkoutTableViewCell.swift */,
 			);
 			path = WorkoutViewController;
+			sourceTree = "<group>";
+		};
+		E8BFB73E23AAAECC008B4E88 /* ExerciseViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExerciseViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

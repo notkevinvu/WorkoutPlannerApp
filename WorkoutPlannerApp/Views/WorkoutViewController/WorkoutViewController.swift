@@ -25,6 +25,7 @@ class WorkoutViewController: UIViewController, UITableViewDataSource, UITableVie
         // these statements tell the table view that we want to use our class as the data source and the delegate
         // need to add the protocols to class definition
         workoutTableView.dataSource = self
+        // the delegate is telling the table view to use our code instead of the default code (e.g. heightForRowAt, etc)
         workoutTableView.delegate = self
         
         WorkoutFunctions.readWorkout { [weak self] in
@@ -46,7 +47,11 @@ class WorkoutViewController: UIViewController, UITableViewDataSource, UITableVie
         
         return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // 140 is the height of the cell/its content view
+        return 140
+    }
     
 
 }

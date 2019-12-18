@@ -19,11 +19,12 @@ class WorkoutTableViewCell: UITableViewCell {
         // Initialization code
         
         workoutCardView.layer.shadowOpacity = 1
-        // by default, shadowOffset makes the shadow down and to the right (I think); setting it to 0 gives it zero offset
+        // by default, shadowOffset makes the shadow appear on the top side (i.e. a vertical y of -3.0
         workoutCardView.layer.shadowOffset = CGSize.zero
         workoutCardView.layer.shadowColor = UIColor.darkGray.cgColor
+        workoutCardView.layer.cornerRadius = 15
+        
     }
-    
     
     func setup(workoutModel: WorkoutModel) {
         workoutTitleLabel.text = workoutModel.title

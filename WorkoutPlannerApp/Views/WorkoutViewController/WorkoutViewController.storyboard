@@ -15,9 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pXU-uZ-WSi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pXU-uZ-WSi">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                                <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="workoutCell" rowHeight="140" id="Jaj-5g-HTt" customClass="WorkoutTableViewCell" customModule="WorkoutPlannerApp" customModuleProvider="target">
@@ -27,21 +26,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z7o-Pr-DTv">
-                                                    <rect key="frame" x="20" y="12" width="374" height="117.78485745968898"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z7o-Pr-DTv">
+                                                    <rect key="frame" x="20" y="12" width="374" height="117"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahU-2U-Gte">
-                                                            <rect key="frame" x="8" y="8" width="168" height="60"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahU-2U-Gte">
+                                                            <rect key="frame" x="19" y="8" width="337" height="58"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="337" id="jY5-Vc-Ori"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.071625644820309461" green="0.21221036732611692" blue="0.3430758248730964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="ahU-2U-Gte" firstAttribute="leading" secondItem="z7o-Pr-DTv" secondAttribute="leading" constant="19" id="AMx-JU-8Yn"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ahU-2U-Gte" secondAttribute="bottom" constant="51" id="Dmd-a1-N6O"/>
+                                                        <constraint firstItem="ahU-2U-Gte" firstAttribute="top" secondItem="z7o-Pr-DTv" secondAttribute="topMargin" id="f8U-aW-Hz4"/>
+                                                        <constraint firstItem="ahU-2U-Gte" firstAttribute="centerX" secondItem="z7o-Pr-DTv" secondAttribute="centerX" id="nhc-tg-SXC"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="z7o-Pr-DTv" firstAttribute="bottom" secondItem="4MM-TS-R68" secondAttribute="bottomMargin" id="FLg-DZ-bPU"/>
+                                                <constraint firstItem="z7o-Pr-DTv" firstAttribute="leading" secondItem="4MM-TS-R68" secondAttribute="leadingMargin" id="ufP-qK-5jI"/>
+                                                <constraint firstItem="z7o-Pr-DTv" firstAttribute="centerY" secondItem="4MM-TS-R68" secondAttribute="centerY" id="v4L-ui-0Pz"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="workoutCardView" destination="z7o-Pr-DTv" id="SGu-xo-CMy"/>
@@ -52,6 +63,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="leading" secondItem="waT-D7-MfC" secondAttribute="leading" id="9Ir-MW-Ah3"/>
+                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="centerX" secondItem="dBP-AW-nQK" secondAttribute="centerX" id="NIh-Wb-vfc"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="pXU-uZ-WSi" secondAttribute="bottom" constant="-34" id="ZGd-PL-K24"/>
+                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="top" secondItem="dBP-AW-nQK" secondAttribute="topMargin" constant="-44" id="qPA-3h-Fzv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="waT-D7-MfC"/>
                     </view>
                     <navigationItem key="navigationItem" id="Iiu-Pi-Bhp"/>
