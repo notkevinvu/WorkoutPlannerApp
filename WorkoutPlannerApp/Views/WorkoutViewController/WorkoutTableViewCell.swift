@@ -6,6 +6,8 @@
 //  Copyright © 2019 Kevin Vu. All rights reserved.
 //
 
+// may want to revert to regular table view cells rather than spaced, separated cells
+
 import UIKit
 
 class WorkoutTableViewCell: UITableViewCell {
