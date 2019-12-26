@@ -24,7 +24,8 @@
 		E8BFB74523AABAEF008B4E88 /* ExerciseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB74423AABAEF008B4E88 /* ExerciseFunctions.swift */; };
 		E8BFB74823B52BD4008B4E88 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB74723B52BD4008B4E88 /* UIViewExtensions.swift */; };
 		E8BFB74B23B53F30008B4E88 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB74A23B53F30008B4E88 /* Theme.swift */; };
-		E8BFB74D23B53FC4008B4E88 /* SF-Pro-Rounded-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8BFB74C23B53FC4008B4E88 /* SF-Pro-Rounded-Regular.otf */; };
+		E8BFB75323B54734008B4E88 /* Cochin.ttc in Resources */ = {isa = PBXBuildFile; fileRef = E8BFB75223B54734008B4E88 /* Cochin.ttc */; };
+		E8BFB75523B547DF008B4E88 /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8BFB75423B5476F008B4E88 /* SF-Pro-Rounded-Medium.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +69,8 @@
 		E8BFB74423AABAEF008B4E88 /* ExerciseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFunctions.swift; sourceTree = "<group>"; };
 		E8BFB74723B52BD4008B4E88 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		E8BFB74A23B53F30008B4E88 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		E8BFB74C23B53FC4008B4E88 /* SF-Pro-Rounded-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Regular.otf"; sourceTree = "<group>"; };
+		E8BFB75223B54734008B4E88 /* Cochin.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cochin.ttc; sourceTree = "<group>"; };
+		E8BFB75423B5476F008B4E88 /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Rounded-Medium.otf"; path = "../../../../../../../Library/Fonts/SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,7 +218,8 @@
 		E8BFB74923B53F24008B4E88 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E8BFB74C23B53FC4008B4E88 /* SF-Pro-Rounded-Regular.otf */,
+				E8BFB75223B54734008B4E88 /* Cochin.ttc */,
+				E8BFB75423B5476F008B4E88 /* SF-Pro-Rounded-Medium.otf */,
 				E8BFB74A23B53F30008B4E88 /* Theme.swift */,
 			);
 			path = Resources;
@@ -327,8 +330,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E85B5C2E23A7190D00FCC58A /* LaunchScreen.storyboard in Resources */,
-				E8BFB74D23B53FC4008B4E88 /* SF-Pro-Rounded-Regular.otf in Resources */,
+				E8BFB75523B547DF008B4E88 /* SF-Pro-Rounded-Medium.otf in Resources */,
 				E85B5C2B23A7190D00FCC58A /* Assets.xcassets in Resources */,
+				E8BFB75323B54734008B4E88 /* Cochin.ttc in Resources */,
 				E85B5C5E23A928D300FCC58A /* WorkoutViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

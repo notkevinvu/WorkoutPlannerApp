@@ -22,6 +22,7 @@ class WorkoutTableViewCell: UITableViewCell {
         // Initialization code (i.e. this is the code we want to execute first when the table view cell is created)
         
         workoutCardView.addShadowAndRoundedCorners()
+        workoutTitleLabel.font = UIFont(name: Theme.mainFontName, size: 42)
         
     }
     

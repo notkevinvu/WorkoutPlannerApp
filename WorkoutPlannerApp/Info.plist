@@ -62,7 +62,8 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SF-Pro-Rounded-Regular.otf</string>
+		<string>Cochin.ttc</string>
+		<string>SF-Pro-Rounded-Medium.otf</string>
 	</array>
 </dict>
 </plist>
