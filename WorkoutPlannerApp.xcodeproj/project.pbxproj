@@ -22,6 +22,7 @@
 		E8BFB74123AAAF68008B4E88 /* ExerciseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB74023AAAF68008B4E88 /* ExerciseModel.swift */; };
 		E8BFB74323AABA71008B4E88 /* ExerciseSetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB74223AABA71008B4E88 /* ExerciseSetModel.swift */; };
 		E8BFB74523AABAEF008B4E88 /* ExerciseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB74423AABAEF008B4E88 /* ExerciseFunctions.swift */; };
+		E8BFB74823B52BD4008B4E88 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB74723B52BD4008B4E88 /* UIViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		E8BFB74023AAAF68008B4E88 /* ExerciseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModel.swift; sourceTree = "<group>"; };
 		E8BFB74223AABA71008B4E88 /* ExerciseSetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSetModel.swift; sourceTree = "<group>"; };
 		E8BFB74423AABAEF008B4E88 /* ExerciseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFunctions.swift; sourceTree = "<group>"; };
+		E8BFB74723B52BD4008B4E88 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		E85B5C2023A7190C00FCC58A /* WorkoutPlannerApp */ = {
 			isa = PBXGroup;
 			children = (
+				E8BFB74623B52BB4008B4E88 /* Extensions */,
 				E85B5C5B23A9289200FCC58A /* Views */,
 				E85B5C5123A7F86B00FCC58A /* Model */,
 				E85B5C2123A7190C00FCC58A /* AppDelegate.swift */,
@@ -195,6 +198,14 @@
 				E8BFB74423AABAEF008B4E88 /* ExerciseFunctions.swift */,
 			);
 			path = Exercise;
+			sourceTree = "<group>";
+		};
+		E8BFB74623B52BB4008B4E88 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E8BFB74723B52BD4008B4E88 /* UIViewExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8BFB74823B52BD4008B4E88 /* UIViewExtensions.swift in Sources */,
 				E85B5C5623A7F8C900FCC58A /* WorkoutModel.swift in Sources */,
 				E85B5C6023A9291800FCC58A /* WorkoutViewController.swift in Sources */,
 				E85B5C2223A7190C00FCC58A /* AppDelegate.swift in Sources */,

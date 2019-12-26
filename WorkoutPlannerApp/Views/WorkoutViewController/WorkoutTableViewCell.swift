@@ -13,16 +13,13 @@ class WorkoutTableViewCell: UITableViewCell {
     @IBOutlet weak var workoutCardView: UIView!
     
     @IBOutlet weak var workoutTitleLabel: UILabel!
-    
+
+    // remember to put in outlets prior to awakeFromNib (ideally)
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        // Initialization code (i.e. this is the code we want to execute first when the table view cell is created)
         
-        workoutCardView.layer.shadowOpacity = 1
-        // by default, shadowOffset makes the shadow appear on the top side (i.e. a vertical y of -3.0
-        workoutCardView.layer.shadowOffset = CGSize.zero
-        workoutCardView.layer.shadowColor = UIColor.darkGray.cgColor
-        workoutCardView.layer.cornerRadius = 15
+        workoutCardView.addShadowAndRoundedCorners()
         
     }
     
