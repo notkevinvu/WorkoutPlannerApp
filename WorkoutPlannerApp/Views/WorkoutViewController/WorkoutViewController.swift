@@ -12,7 +12,7 @@
 
 import UIKit
 
-class WorkoutViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class WorkoutViewController: UIViewController {
 
     @IBOutlet weak var workoutTableView: UITableView!
     
@@ -33,6 +33,11 @@ class WorkoutViewController: UIViewController, UITableViewDataSource, UITableVie
             self?.workoutTableView.reloadData()
         }
     }
+}
+
+// moved tableView configuration code into its own extension of the WorkoutViewController class to partition more distinctly
+// alternatively, we could potentially just put this extension in a different file, but it is unnecessary at the moment
+extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
     
     // configures the table view to show the count of workout models (REQUIRED for UITableViewDataSource)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -9,7 +9,7 @@
 import Foundation
 
 struct exerciseSetModel {
-    static var weightOfSet: Int
-    static var numOfReps: Int
+    var weightOfSet: Int
+    var numOfReps: Int
     
 }
