@@ -16,4 +16,8 @@ class Theme {
 //    static let mainFontName = "Cochin"
     static let mainFontName = "SFProRounded-Medium"
     
+    // constants for using colors in code for the table view cells and other views
+    static let accent = UIColor(named: "Accent")
+    static let background = UIColor(named: "Background")
+    static let tint = UIColor(named: "Tint")
 }

@@ -26,6 +26,7 @@
 		E8BFB74B23B53F30008B4E88 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB74A23B53F30008B4E88 /* Theme.swift */; };
 		E8BFB75323B54734008B4E88 /* Cochin.ttc in Resources */ = {isa = PBXBuildFile; fileRef = E8BFB75223B54734008B4E88 /* Cochin.ttc */; };
 		E8BFB75523B547DF008B4E88 /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8BFB75423B5476F008B4E88 /* SF-Pro-Rounded-Medium.otf */; };
+		E8BFB75B23B83D09008B4E88 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8BFB75A23B83D09008B4E88 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		E8BFB74A23B53F30008B4E88 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		E8BFB75223B54734008B4E88 /* Cochin.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cochin.ttc; sourceTree = "<group>"; };
 		E8BFB75423B5476F008B4E88 /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Rounded-Medium.otf"; path = "../../../../../../../Library/Fonts/SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
+		E8BFB75A23B83D09008B4E88 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				E8BFB75223B54734008B4E88 /* Cochin.ttc */,
 				E8BFB75423B5476F008B4E88 /* SF-Pro-Rounded-Medium.otf */,
 				E8BFB74A23B53F30008B4E88 /* Theme.swift */,
+				E8BFB75A23B83D09008B4E88 /* Colors.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				E85B5C2E23A7190D00FCC58A /* LaunchScreen.storyboard in Resources */,
 				E8BFB75523B547DF008B4E88 /* SF-Pro-Rounded-Medium.otf in Resources */,
 				E85B5C2B23A7190D00FCC58A /* Assets.xcassets in Resources */,
+				E8BFB75B23B83D09008B4E88 /* Colors.xcassets in Resources */,
 				E8BFB75323B54734008B4E88 /* Cochin.ttc in Resources */,
 				E85B5C5E23A928D300FCC58A /* WorkoutViewController.storyboard in Resources */,
 			);
