@@ -23,7 +23,7 @@ class WorkoutTableViewCell: UITableViewCell {
         
         workoutCardView.addShadowAndRoundedCorners()
         workoutTitleLabel.font = UIFont(name: Theme.mainFontName, size: 38)
-        workoutCardView.backgroundColor = Theme.background
+        workoutCardView.backgroundColor = Theme.backgroundContrast
         
     }
     

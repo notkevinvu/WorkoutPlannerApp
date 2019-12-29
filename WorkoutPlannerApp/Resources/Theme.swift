@@ -17,7 +17,16 @@ class Theme {
     static let mainFontName = "SFProRounded-Medium"
     
     // constants for using colors in code for the table view cells and other views
+    // use accent for text
     static let accent = UIColor(named: "Accent")
+    // background is for the true background
     static let background = UIColor(named: "Background")
+    // use contrast for card view, so that 
+    static let backgroundContrast = UIColor(named: "BackgroundContrast")
+    // use tint for interactive UI elements
     static let tint = UIColor(named: "Tint")
+    // use main color for any design elements that don't use text/background
+    static let mainColor = "MainColor"
+    static let lightAccent = UIColor(named: "LightAccent")
+    
 }
