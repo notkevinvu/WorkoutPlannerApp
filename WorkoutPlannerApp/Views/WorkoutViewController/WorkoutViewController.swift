@@ -16,13 +16,31 @@ class WorkoutViewController: UIViewController {
 
     @IBOutlet weak var workoutTableView: UITableView!
     
+    @IBOutlet weak var addWorkoutButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Workouts"
 //        navigationController?.navigationBar.prefersLargeTitles = true
         
+        navigationController?.navigationBar.barTintColor = Theme.mainColor
         workoutTableView.backgroundColor = Theme.background
+        
+        // point size can be used to change the scale of the image we are adding to the button
+        let addWorkoutButtonConfig = UIImage.SymbolConfiguration(pointSize: 28, weight: .semibold)
+        let addWorkoutButtonImage = UIImage(systemName: "plus", withConfiguration: addWorkoutButtonConfig)
+        addWorkoutButton.setImage(addWorkoutButtonImage, for: .normal)
+        addWorkoutButton.tintColor = Theme.accent
+        addWorkoutButton.backgroundColor = Theme.tint
+        // by setting the corner radius to half the frame's height/width (the same since we set the button to be 56x56), it will make the button a perfect circle
+        addWorkoutButton.layer.cornerRadius = addWorkoutButton.frame.height / 2
+        // making shadow of the button be seen
+        addWorkoutButton.layer.shadowOpacity = 0.25
+        addWorkoutButton.layer.shadowRadius = 5
+        // positive height moves shadow downwards
+        addWorkoutButton.layer.shadowOffset = CGSize(width: 0, height: 8)
+        
         
         // these statements tell the table view that we want to use our class as the data source and the delegate
         // need to add the protocols to class definition

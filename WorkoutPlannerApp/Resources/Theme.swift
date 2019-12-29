@@ -26,7 +26,7 @@ class Theme {
     // use tint for interactive UI elements
     static let tint = UIColor(named: "Tint")
     // use main color for any design elements that don't use text/background
-    static let mainColor = "MainColor"
+    static let mainColor = UIColor(named: "MainColor")
     static let lightAccent = UIColor(named: "LightAccent")
     
 }
