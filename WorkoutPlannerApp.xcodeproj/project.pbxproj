@@ -27,6 +27,7 @@
 		E8BFB75323B54734008B4E88 /* Cochin.ttc in Resources */ = {isa = PBXBuildFile; fileRef = E8BFB75223B54734008B4E88 /* Cochin.ttc */; };
 		E8BFB75523B547DF008B4E88 /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8BFB75423B5476F008B4E88 /* SF-Pro-Rounded-Medium.otf */; };
 		E8BFB75B23B83D09008B4E88 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8BFB75A23B83D09008B4E88 /* Colors.xcassets */; };
+		E8BFB75F23B97644008B4E88 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB75E23B97644008B4E88 /* UIButtonExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		E8BFB75223B54734008B4E88 /* Cochin.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cochin.ttc; sourceTree = "<group>"; };
 		E8BFB75423B5476F008B4E88 /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Rounded-Medium.otf"; path = "../../../../../../../Library/Fonts/SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
 		E8BFB75A23B83D09008B4E88 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		E8BFB75E23B97644008B4E88 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				E8BFB74723B52BD4008B4E88 /* UIViewExtensions.swift */,
+				E8BFB75E23B97644008B4E88 /* UIButtonExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				E85B5C2423A7190C00FCC58A /* SceneDelegate.swift in Sources */,
 				E8BFB73D23AA655C008B4E88 /* WorkoutTableViewCell.swift in Sources */,
 				E85B5C5A23A7FFC900FCC58A /* WorkoutData.swift in Sources */,
+				E8BFB75F23B97644008B4E88 /* UIButtonExtension.swift in Sources */,
 				E8BFB74523AABAEF008B4E88 /* ExerciseFunctions.swift in Sources */,
 				E8BFB74B23B53F30008B4E88 /* Theme.swift in Sources */,
 				E8BFB74123AAAF68008B4E88 /* ExerciseModel.swift in Sources */,

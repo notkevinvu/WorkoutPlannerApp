@@ -29,17 +29,8 @@ class WorkoutViewController: UIViewController {
         
         // point size can be used to change the scale of the image we are adding to the button
         let addWorkoutButtonConfig = UIImage.SymbolConfiguration(pointSize: 28, weight: .semibold)
-        let addWorkoutButtonImage = UIImage(systemName: "plus", withConfiguration: addWorkoutButtonConfig)
-        addWorkoutButton.setImage(addWorkoutButtonImage, for: .normal)
-        addWorkoutButton.tintColor = Theme.accent
-        addWorkoutButton.backgroundColor = Theme.tint
-        // by setting the corner radius to half the frame's height/width (the same since we set the button to be 56x56), it will make the button a perfect circle
-        addWorkoutButton.layer.cornerRadius = addWorkoutButton.frame.height / 2
-        // making shadow of the button be seen
-        addWorkoutButton.layer.shadowOpacity = 0.25
-        addWorkoutButton.layer.shadowRadius = 5
-        // positive height moves shadow downwards
-        addWorkoutButton.layer.shadowOffset = CGSize(width: 0, height: 8)
+        let addWorkoutButtonImage = UIImage(systemName: "plus", withConfiguration: addWorkoutButtonConfig)!
+        addWorkoutButton.createWorkoutButton(UIButton: addWorkoutButton, config: addWorkoutButtonConfig, image: addWorkoutButtonImage)
         
         
         // these statements tell the table view that we want to use our class as the data source and the delegate
