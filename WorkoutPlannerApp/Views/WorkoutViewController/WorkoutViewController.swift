@@ -21,10 +21,12 @@ class WorkoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let navBarTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.accent]
+        navigationController?.navigationBar.titleTextAttributes = navBarTextAttributes as [NSAttributedString.Key : Any]
         navigationItem.title = "Workouts"
 //        navigationController?.navigationBar.prefersLargeTitles = true
         
-        navigationController?.navigationBar.barTintColor = Theme.mainColor
+        navigationController?.navigationBar.barTintColor = Theme.background
         workoutTableView.backgroundColor = Theme.background
         
         // point size can be used to change the scale of the image we are adding to the button

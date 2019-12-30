@@ -17,11 +17,11 @@
             <objects>
                 <viewController id="lYX-yh-csG" customClass="WorkoutViewController" customModule="WorkoutPlannerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dBP-AW-nQK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pXU-uZ-WSi">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -38,7 +38,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahU-2U-Gte">
                                                             <rect key="frame" x="19" y="8" width="337" height="59"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="337" id="eli-j6-5n7"/>
+                                                                <constraint firstAttribute="width" constant="337" id="6dZ-VT-dOq"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="38"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -47,18 +47,18 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="ahU-2U-Gte" secondAttribute="bottom" constant="51" id="0Ed-YE-7jv"/>
-                                                        <constraint firstItem="ahU-2U-Gte" firstAttribute="top" secondItem="z7o-Pr-DTv" secondAttribute="topMargin" id="AOf-Do-AGJ"/>
-                                                        <constraint firstItem="ahU-2U-Gte" firstAttribute="leading" secondItem="z7o-Pr-DTv" secondAttribute="leading" constant="19" id="Kx9-NF-hYa"/>
-                                                        <constraint firstAttribute="trailing" secondItem="ahU-2U-Gte" secondAttribute="trailing" constant="39" id="LED-hk-4ix"/>
+                                                        <constraint firstItem="ahU-2U-Gte" firstAttribute="leading" secondItem="z7o-Pr-DTv" secondAttribute="leading" constant="19" id="CSy-TJ-LAW"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ahU-2U-Gte" secondAttribute="bottom" constant="51" id="OVO-Rj-1LC"/>
+                                                        <constraint firstItem="ahU-2U-Gte" firstAttribute="top" secondItem="z7o-Pr-DTv" secondAttribute="topMargin" id="gbG-2T-B4f"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ahU-2U-Gte" secondAttribute="trailing" constant="39" id="wwT-I4-go4"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="z7o-Pr-DTv" firstAttribute="top" secondItem="4MM-TS-R68" secondAttribute="topMargin" id="V1c-E7-GkA"/>
-                                                <constraint firstItem="z7o-Pr-DTv" firstAttribute="centerX" secondItem="4MM-TS-R68" secondAttribute="centerX" id="Xmf-eW-iZ7"/>
-                                                <constraint firstItem="z7o-Pr-DTv" firstAttribute="bottom" secondItem="4MM-TS-R68" secondAttribute="bottomMargin" id="sIw-eY-LOM"/>
+                                                <constraint firstItem="z7o-Pr-DTv" firstAttribute="top" secondItem="4MM-TS-R68" secondAttribute="topMargin" id="3ed-kF-fUa"/>
+                                                <constraint firstItem="z7o-Pr-DTv" firstAttribute="bottom" secondItem="4MM-TS-R68" secondAttribute="bottomMargin" id="3oy-nb-Nt3"/>
+                                                <constraint firstItem="z7o-Pr-DTv" firstAttribute="centerX" secondItem="4MM-TS-R68" secondAttribute="centerX" id="cUO-Kf-ivr"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -69,19 +69,22 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ith-a3-txv">
-                                <rect key="frame" x="335" y="805" width="56" height="56"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ith-a3-txv">
+                                <rect key="frame" x="333" y="717" width="56" height="56"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" image="plus" catalog="system"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="centerX" secondItem="dBP-AW-nQK" secondAttribute="centerX" id="Cm3-Lw-Zfu"/>
-                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="top" secondItem="dBP-AW-nQK" secondAttribute="topMargin" id="Gc6-oc-IKH"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="pXU-uZ-WSi" secondAttribute="bottom" constant="-34" id="KCm-0f-RM6"/>
-                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="leading" secondItem="waT-D7-MfC" secondAttribute="leading" id="LB8-0P-pJQ"/>
+                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="centerY" secondItem="dBP-AW-nQK" secondAttribute="centerY" id="1yw-fb-upS"/>
+                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="top" secondItem="waT-D7-MfC" secondAttribute="top" id="3Ok-cW-oSS"/>
+                            <constraint firstItem="waT-D7-MfC" firstAttribute="bottom" secondItem="Ith-a3-txv" secondAttribute="bottom" constant="1" id="5TP-0P-bBQ"/>
+                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="leading" secondItem="waT-D7-MfC" secondAttribute="leading" id="BTm-qs-GGH"/>
+                            <constraint firstItem="waT-D7-MfC" firstAttribute="trailing" secondItem="Ith-a3-txv" secondAttribute="trailing" constant="25" id="GCi-m8-DG1"/>
+                            <constraint firstItem="Ith-a3-txv" firstAttribute="top" secondItem="waT-D7-MfC" secondAttribute="top" constant="717" id="W1k-4c-VRv"/>
+                            <constraint firstItem="Ith-a3-txv" firstAttribute="leading" secondItem="waT-D7-MfC" secondAttribute="leading" constant="333" id="gnm-CE-lPh"/>
+                            <constraint firstItem="pXU-uZ-WSi" firstAttribute="centerX" secondItem="dBP-AW-nQK" secondAttribute="centerX" id="iG5-CI-f1A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="waT-D7-MfC"/>
                     </view>
@@ -100,7 +103,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nP0-zB-R0a" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZfL-S4-tQx">
+                    <navigationBar key="navigationBar" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ZfL-S4-tQx">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
