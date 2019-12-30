@@ -129,6 +129,16 @@
             </objects>
             <point key="canvasLocation" x="1030" y="-149"/>
         </scene>
+        <!--exerciseViewController-->
+        <scene sceneID="Poh-5h-5Xa">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xHf-zd-1bW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="exerciseViewController" storyboardName="ExerciseViewController" referencedIdentifier="exerciseViewController" id="3lq-p5-H0Y" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8cW-iH-G1r"/>
+                </viewControllerPlaceholder>
+            </objects>
+            <point key="canvasLocation" x="1730" y="-545"/>
+        </scene>
     </scenes>
     <resources>
         <image name="plus" catalog="system" width="64" height="56"/>

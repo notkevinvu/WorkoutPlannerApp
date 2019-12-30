@@ -25,9 +25,28 @@ class AddWorkoutViewController: UIViewController {
         addWorkoutPopup.backgroundColor = Theme.background
         
         addWorkoutTitleLabel.textColor = Theme.accent
+        addWorkoutTitleLabel.font = UIFont(name: Theme.mainFontName, size: 26)
         
         workoutTitleTextField.backgroundColor = Theme.accent
-        // Do any additional setup after loading the view.
+        workoutTitleTextField.placeholder = "Enter workout title..."
+        
+        // alternative to calling the next 13~ lines of code for the button configuration is to set up a custom UIButton class, where we utilize these options (similar to in our UIButtonExtension file) and have the buttons inherit the properties of that class (i.e. set the button as a subclass of the custom UIButton class)
+        cancelAddWorkoutButton.setTitleColor(Theme.accent, for: .normal)
+        saveAddWorkoutButton.setTitleColor(Theme.accent, for: .normal)
+        
+        cancelAddWorkoutButton.backgroundColor = Theme.tint
+        saveAddWorkoutButton.backgroundColor = Theme.tint
+        
+        cancelAddWorkoutButton.layer.cornerRadius = cancelAddWorkoutButton.frame.height / 2
+        cancelAddWorkoutButton.layer.shadowOpacity = 0.25
+        cancelAddWorkoutButton.layer.shadowRadius = 5
+        
+        saveAddWorkoutButton.layer.cornerRadius = saveAddWorkoutButton.frame.height / 2
+        saveAddWorkoutButton.layer.shadowOpacity = 0.25
+        saveAddWorkoutButton.layer.shadowRadius = 5
+        
+        cancelAddWorkoutButton.titleLabel?.font = UIFont(name: Theme.mainFontName, size: 20)
+        saveAddWorkoutButton.titleLabel?.font = UIFont(name: Theme.mainFontName, size: 20)
     }
     
     @IBAction func cancel(_ sender: UIButton) {

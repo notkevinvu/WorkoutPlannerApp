@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E850015423BA959D004C9A9D /* ExerciseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E850015323BA959D004C9A9D /* ExerciseViewController.storyboard */; };
 		E85B5C2223A7190C00FCC58A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B5C2123A7190C00FCC58A /* AppDelegate.swift */; };
 		E85B5C2423A7190C00FCC58A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B5C2323A7190C00FCC58A /* SceneDelegate.swift */; };
 		E85B5C2B23A7190D00FCC58A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E85B5C2A23A7190D00FCC58A /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		E8BFB75F23B97644008B4E88 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB75E23B97644008B4E88 /* UIButtonExtension.swift */; };
 		E8BFB76423B97E74008B4E88 /* AddWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB76323B97E74008B4E88 /* AddWorkoutViewController.swift */; };
 		E8BFB76623B9A458008B4E88 /* AddWorkoutViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8BFB76523B9A458008B4E88 /* AddWorkoutViewController.storyboard */; };
+		E8BFB76E23BA7938008B4E88 /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB76D23BA7938008B4E88 /* ExerciseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E850015323BA959D004C9A9D /* ExerciseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExerciseViewController.storyboard; sourceTree = "<group>"; };
 		E85B5C1E23A7190C00FCC58A /* WorkoutPlannerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutPlannerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85B5C2123A7190C00FCC58A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E85B5C2323A7190C00FCC58A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +82,7 @@
 		E8BFB75E23B97644008B4E88 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		E8BFB76323B97E74008B4E88 /* AddWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewController.swift; sourceTree = "<group>"; };
 		E8BFB76523B9A458008B4E88 /* AddWorkoutViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddWorkoutViewController.storyboard; path = WorkoutPlannerApp/Views/AddWorkoutViewController/AddWorkoutViewController.storyboard; sourceTree = SOURCE_ROOT; };
+		E8BFB76D23BA7938008B4E88 /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +206,8 @@
 		E8BFB73E23AAAECC008B4E88 /* ExerciseViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E8BFB76D23BA7938008B4E88 /* ExerciseViewController.swift */,
+				E850015323BA959D004C9A9D /* ExerciseViewController.storyboard */,
 			);
 			path = ExerciseViewController;
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 				E85B5C2B23A7190D00FCC58A /* Assets.xcassets in Resources */,
 				E8BFB76623B9A458008B4E88 /* AddWorkoutViewController.storyboard in Resources */,
 				E8BFB75B23B83D09008B4E88 /* Colors.xcassets in Resources */,
+				E850015423BA959D004C9A9D /* ExerciseViewController.storyboard in Resources */,
 				E8BFB75323B54734008B4E88 /* Cochin.ttc in Resources */,
 				E85B5C5E23A928D300FCC58A /* WorkoutViewController.storyboard in Resources */,
 			);
@@ -381,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8BFB74823B52BD4008B4E88 /* UIViewExtensions.swift in Sources */,
+				E8BFB76E23BA7938008B4E88 /* ExerciseViewController.swift in Sources */,
 				E85B5C5623A7F8C900FCC58A /* WorkoutModel.swift in Sources */,
 				E8BFB76423B97E74008B4E88 /* AddWorkoutViewController.swift in Sources */,
 				E85B5C6023A9291800FCC58A /* WorkoutViewController.swift in Sources */,

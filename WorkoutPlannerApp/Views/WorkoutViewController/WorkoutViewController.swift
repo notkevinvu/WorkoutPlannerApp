@@ -48,6 +48,13 @@ class WorkoutViewController: UIViewController {
             // the following code is called when the completion function gets called (i.e. after it retrieves data on the background thread
             self?.workoutTableView.reloadData()
         }
+    } // end viewDidLoad
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // when we select a row in the table view, push the new view controller like so: (don't need to use a segue)
+        if let newExerciseVC = storyboard?.instantiateViewController(withIdentifier: "exerciseViewController") as? ExerciseViewController {
+            navigationController?.pushViewController(newExerciseVC, animated: true)
+        }
     }
 }
 
