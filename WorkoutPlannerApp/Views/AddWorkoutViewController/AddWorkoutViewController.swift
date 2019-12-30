@@ -9,14 +9,34 @@
 import UIKit
 
 class AddWorkoutViewController: UIViewController {
-
+    
+    @IBOutlet weak var addWorkoutPopup: UIView!
+    @IBOutlet weak var addWorkoutTitleLabel: UILabel!
+    @IBOutlet weak var workoutTitleTextField: UITextField!
+    @IBOutlet weak var cancelAddWorkoutButton: UIButton!
+    @IBOutlet weak var saveAddWorkoutButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        addWorkoutPopup.addShadowAndRoundedCorners()
+        addWorkoutPopup.layer.borderWidth = 2
+        addWorkoutPopup.layer.borderColor = Theme.mainColor?.cgColor
+        addWorkoutPopup.backgroundColor = Theme.background
+        
+        addWorkoutTitleLabel.textColor = Theme.accent
+        
+        workoutTitleTextField.backgroundColor = Theme.accent
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func cancel(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func save(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

@@ -21,14 +21,17 @@ class WorkoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // configuring navigation title's text color and text
         let navBarTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.accent]
         navigationController?.navigationBar.titleTextAttributes = navBarTextAttributes as [NSAttributedString.Key : Any]
         navigationItem.title = "Workouts"
 //        navigationController?.navigationBar.prefersLargeTitles = true
         
+        // configuring color for navigation bar and the table view background
         navigationController?.navigationBar.barTintColor = Theme.background
         workoutTableView.backgroundColor = Theme.background
         
+        // configuring the floating action button to add workouts
         // point size can be used to change the scale of the image we are adding to the button
         let addWorkoutButtonConfig = UIImage.SymbolConfiguration(pointSize: 28, weight: .semibold)
         let addWorkoutButtonImage = UIImage(systemName: "plus", withConfiguration: addWorkoutButtonConfig)!

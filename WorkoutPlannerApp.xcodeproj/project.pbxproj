@@ -28,8 +28,8 @@
 		E8BFB75523B547DF008B4E88 /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8BFB75423B5476F008B4E88 /* SF-Pro-Rounded-Medium.otf */; };
 		E8BFB75B23B83D09008B4E88 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8BFB75A23B83D09008B4E88 /* Colors.xcassets */; };
 		E8BFB75F23B97644008B4E88 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB75E23B97644008B4E88 /* UIButtonExtension.swift */; };
-		E8BFB76123B97E06008B4E88 /* AddWorkoutViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8BFB76023B97E06008B4E88 /* AddWorkoutViewController.storyboard */; };
 		E8BFB76423B97E74008B4E88 /* AddWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB76323B97E74008B4E88 /* AddWorkoutViewController.swift */; };
+		E8BFB76623B9A458008B4E88 /* AddWorkoutViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8BFB76523B9A458008B4E88 /* AddWorkoutViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,8 +77,8 @@
 		E8BFB75423B5476F008B4E88 /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Rounded-Medium.otf"; path = "../../../../../../../Library/Fonts/SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
 		E8BFB75A23B83D09008B4E88 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E8BFB75E23B97644008B4E88 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
-		E8BFB76023B97E06008B4E88 /* AddWorkoutViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddWorkoutViewController.storyboard; sourceTree = "<group>"; };
 		E8BFB76323B97E74008B4E88 /* AddWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewController.swift; sourceTree = "<group>"; };
+		E8BFB76523B9A458008B4E88 /* AddWorkoutViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddWorkoutViewController.storyboard; path = WorkoutPlannerApp/Views/AddWorkoutViewController/AddWorkoutViewController.storyboard; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,7 +239,7 @@
 		E8BFB76223B97E4A008B4E88 /* AddWorkoutViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E8BFB76023B97E06008B4E88 /* AddWorkoutViewController.storyboard */,
+				E8BFB76523B9A458008B4E88 /* AddWorkoutViewController.storyboard */,
 				E8BFB76323B97E74008B4E88 /* AddWorkoutViewController.swift */,
 			);
 			path = AddWorkoutViewController;
@@ -352,7 +352,7 @@
 				E85B5C2E23A7190D00FCC58A /* LaunchScreen.storyboard in Resources */,
 				E8BFB75523B547DF008B4E88 /* SF-Pro-Rounded-Medium.otf in Resources */,
 				E85B5C2B23A7190D00FCC58A /* Assets.xcassets in Resources */,
-				E8BFB76123B97E06008B4E88 /* AddWorkoutViewController.storyboard in Resources */,
+				E8BFB76623B9A458008B4E88 /* AddWorkoutViewController.storyboard in Resources */,
 				E8BFB75B23B83D09008B4E88 /* Colors.xcassets in Resources */,
 				E8BFB75323B54734008B4E88 /* Cochin.ttc in Resources */,
 				E85B5C5E23A928D300FCC58A /* WorkoutViewController.storyboard in Resources */,

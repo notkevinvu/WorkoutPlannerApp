@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIButton {
-
+    
     func createWorkoutButton(UIButton: UIButton, config: UIImage.SymbolConfiguration, image: UIImage) {
         UIButton.setImage(image, for: .normal)
         UIButton.tintColor = Theme.accent
