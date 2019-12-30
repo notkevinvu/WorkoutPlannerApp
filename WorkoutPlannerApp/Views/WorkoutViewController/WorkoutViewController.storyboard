@@ -73,6 +73,9 @@
                                 <rect key="frame" x="333" y="717" width="56" height="56"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <segue destination="M1I-gi-Hg0" kind="presentation" id="eKD-It-OKr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -96,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fo0-hZ-ADP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1173.913043478261" y="-545.08928571428567"/>
+            <point key="canvasLocation" x="1029" y="-545"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dBT-0t-evF">
@@ -117,6 +120,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDd-V0-Qgt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="263.768115942029" y="-545.08928571428567"/>
+        </scene>
+        <!--AddWorkoutViewController-->
+        <scene sceneID="RLZ-uU-xDt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddWorkoutViewController" id="M1I-gi-Hg0" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sTn-eI-dve" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1029" y="140"/>
         </scene>
     </scenes>
     <resources>
