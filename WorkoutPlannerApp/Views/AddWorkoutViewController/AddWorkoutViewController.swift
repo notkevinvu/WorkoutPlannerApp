@@ -66,8 +66,20 @@ class AddWorkoutViewController: UIViewController {
         // otherwise, we create an instance of WorkoutModel using the workoutTitle as the title string
         // and then call createWorkout on that workout
         if let workoutTitle = workoutTitleTextField.text {
+            workoutTitleTextField.rightViewMode = .never
+            
             if workoutTitle.count == 0 {
-                dismiss(animated: true, completion: nil)
+                let titleWarningImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 34))
+                titleWarningImageView.image = UIImage(systemName: "exclamationmark.triangle")
+                titleWarningImageView.contentMode = .scaleAspectFit
+                workoutTitleTextField.rightView = titleWarningImageView
+                workoutTitleTextField.rightViewMode = .always
+                
+                workoutTitleTextField.layer.borderColor = UIColor.red.cgColor
+                workoutTitleTextField.layer.borderWidth = 2
+                workoutTitleTextField.layer.cornerRadius = 5
+                
+                workoutTitleTextField.placeholder = "Workout title required"
                 return
             }
             let workoutToSave = WorkoutModel(title: workoutTitle)
