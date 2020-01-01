@@ -73,7 +73,7 @@ class AddWorkoutViewController: UIViewController {
                 titleWarningImageView.image = UIImage(systemName: "exclamationmark.triangle")
                 titleWarningImageView.contentMode = .scaleAspectFit
                 workoutTitleTextField.rightView = titleWarningImageView
-                workoutTitleTextField.rightViewMode = .always
+                workoutTitleTextField.rightViewMode = .unlessEditing
                 
                 workoutTitleTextField.layer.borderColor = UIColor.red.cgColor
                 workoutTitleTextField.layer.borderWidth = 2
