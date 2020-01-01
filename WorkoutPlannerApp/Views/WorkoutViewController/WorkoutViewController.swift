@@ -50,13 +50,26 @@ class WorkoutViewController: UIViewController {
         }
     } // end viewDidLoad
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "workoutToAddWorkoutSegue" {
+            let popup = segue.destination as! AddWorkoutViewController
+            // use weak self in to prevent memory leak/strong reference cycles
+            // alternatively, we can specify a function elsewhere and set popup.doneSaving to that function, but this is a shorthand method
+            // this will only be called when we press the save button, since we only call doneSaving in the save function in AddWorkoutViewController
+            popup.doneSaving = { [weak self] in
+                self?.workoutTableView.reloadData()
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // when we select a row in the table view, push the new view controller like so: (don't need to use a segue)
         if let newExerciseVC = storyboard?.instantiateViewController(withIdentifier: "exerciseViewController") as? ExerciseViewController {
             navigationController?.pushViewController(newExerciseVC, animated: true)
         }
     }
-}
+} // end class
 
 // moved tableView configuration code into its own extension of the WorkoutViewController class to partition more distinctly
 // alternatively, we could potentially just put this extension in a different file, but it is unnecessary at the moment

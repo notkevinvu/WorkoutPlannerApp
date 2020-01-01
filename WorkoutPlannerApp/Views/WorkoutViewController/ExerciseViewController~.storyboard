@@ -65,6 +65,7 @@
                                         <connections>
                                             <outlet property="workoutCardView" destination="z7o-Pr-DTv" id="SGu-xo-CMy"/>
                                             <outlet property="workoutTitleLabel" destination="ahU-2U-Gte" id="UdE-3a-Lku"/>
+                                            <segue destination="Ckq-N7-Ue3" kind="show" identifier="workoutToExerciseSegue" id="1HI-zg-Ik5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -74,7 +75,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" image="plus" catalog="system"/>
                                 <connections>
-                                    <segue destination="QfG-vX-7hn" kind="presentation" identifier="workoutToAddWorkoutSegue" id="GTP-KS-vEL"/>
+                                    <segue destination="QfG-vX-7hn" kind="presentation" id="GTP-KS-vEL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -100,6 +101,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fo0-hZ-ADP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1029" y="-545"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="eF5-PP-fTU">
+            <objects>
+                <viewController storyboardIdentifier="exerciseViewController" id="Ckq-N7-Ue3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Xr-ci-DLg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="gPd-2J-cPm"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="s3c-HW-G4l"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6y2-Fh-8ul" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1875" y="-545"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dBT-0t-evF">
@@ -128,16 +145,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngC-fS-OvC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1030" y="-149"/>
-        </scene>
-        <!--exerciseViewController-->
-        <scene sceneID="Poh-5h-5Xa">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="exerciseViewController" storyboardName="ExerciseViewController" referencedIdentifier="exerciseViewController" id="3lq-p5-H0Y" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="8cW-iH-G1r"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xHf-zd-1bW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1730" y="-545"/>
         </scene>
     </scenes>
     <resources>

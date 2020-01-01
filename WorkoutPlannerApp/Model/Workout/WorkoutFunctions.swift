@@ -11,7 +11,7 @@ import Foundation
 class WorkoutFunctions {
     // the static keyword allows you to call the function without instantiating the class
     static func createWorkout(workoutModel: WorkoutModel) {
-        
+        WorkoutData.workoutModels.append(workoutModel)
     }
     
     // the parameter "completion: () -> ()" means that the function gets called when we finish getting data on the background thread

@@ -16,6 +16,11 @@ class AddWorkoutViewController: UIViewController {
     @IBOutlet weak var cancelAddWorkoutButton: UIButton!
     @IBOutlet weak var saveAddWorkoutButton: UIButton!
     
+    // this is a callback function, which is a property that contains a function
+    // to give a variable a function type, we use () -> (), which are input and output parameters respectively (but we can leave them empty)
+    // the actual code will be called in WorkoutViewController
+    var doneSaving: (() -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,11 +44,13 @@ class AddWorkoutViewController: UIViewController {
         
         cancelAddWorkoutButton.layer.cornerRadius = cancelAddWorkoutButton.frame.height / 2
         cancelAddWorkoutButton.layer.shadowOpacity = 0.25
-        cancelAddWorkoutButton.layer.shadowRadius = 5
+        cancelAddWorkoutButton.layer.shadowRadius = 4
+        cancelAddWorkoutButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         
         saveAddWorkoutButton.layer.cornerRadius = saveAddWorkoutButton.frame.height / 2
         saveAddWorkoutButton.layer.shadowOpacity = 0.25
-        saveAddWorkoutButton.layer.shadowRadius = 5
+        saveAddWorkoutButton.layer.shadowRadius = 4
+        saveAddWorkoutButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         
         cancelAddWorkoutButton.titleLabel?.font = UIFont(name: Theme.mainFontName, size: 20)
         saveAddWorkoutButton.titleLabel?.font = UIFont(name: Theme.mainFontName, size: 20)
@@ -54,7 +61,26 @@ class AddWorkoutViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        // grab the text of the text field if it exists, sets it to workoutTitle,
+        // dismisses and returns out of the function if nothing was entered,
+        // otherwise, we create an instance of WorkoutModel using the workoutTitle as the title string
+        // and then call createWorkout on that workout
+        if let workoutTitle = workoutTitleTextField.text {
+            if workoutTitle.count == 0 {
+                dismiss(animated: true, completion: nil)
+                return
+            }
+            let workoutToSave = WorkoutModel(title: workoutTitle)
+            WorkoutFunctions.createWorkout(workoutModel: workoutToSave)
+            
+            // since the variable doneSaving can be nil (which would mean there is no code/function associated with it), we must check to see if there is a function/code set to it
+            if let doneSaving = doneSaving {
+                doneSaving()
+            }
+            
+            dismiss(animated: true, completion: nil)
+        }
+        
     }
     /*
     // MARK: - Navigation

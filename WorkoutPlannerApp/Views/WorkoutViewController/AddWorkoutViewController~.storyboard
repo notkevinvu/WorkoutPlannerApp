@@ -74,7 +74,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" image="plus" catalog="system"/>
                                 <connections>
-                                    <segue destination="QfG-vX-7hn" kind="presentation" identifier="workoutToAddWorkoutSegue" id="GTP-KS-vEL"/>
+                                    <segue destination="NEm-jm-2ne" kind="presentation" id="eKD-It-OKr"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -101,6 +101,22 @@
             </objects>
             <point key="canvasLocation" x="1029" y="-545"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="gMK-yX-14p">
+            <objects>
+                <viewController modalPresentationStyle="pageSheet" id="NEm-jm-2ne" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z8k-0N-WeJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.40196917808219179" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="xgG-lP-Evb"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="414" height="842"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BBk-5b-vOU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1029" y="140"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="dBT-0t-evF">
             <objects>
@@ -120,24 +136,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDd-V0-Qgt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="263.768115942029" y="-545.08928571428567"/>
-        </scene>
-        <!--AddWorkoutViewController-->
-        <scene sceneID="p9B-1R-igG">
-            <objects>
-                <viewControllerPlaceholder storyboardName="AddWorkoutViewController" id="QfG-vX-7hn" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ngC-fS-OvC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1030" y="-149"/>
-        </scene>
-        <!--exerciseViewController-->
-        <scene sceneID="Poh-5h-5Xa">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="exerciseViewController" storyboardName="ExerciseViewController" referencedIdentifier="exerciseViewController" id="3lq-p5-H0Y" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="8cW-iH-G1r"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xHf-zd-1bW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1730" y="-545"/>
         </scene>
     </scenes>
     <resources>
