@@ -94,5 +94,19 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
         return 140
     }
     
+    
+    // alternative method to enable swipe to delete (but this utilizes a generic swipe, there is an inbuilt function called tableView(_:commit:forRowAt:)
+    
+    // in this scenario, trailing is at the right side
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let deleteWorkout = UIContextualAction(style: .destructive, title: "Delete", handler: )
+//    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            WorkoutData.workoutModels.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 
 }
