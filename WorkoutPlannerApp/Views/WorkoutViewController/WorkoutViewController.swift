@@ -21,6 +21,7 @@ class WorkoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // MARK: SETTING UP VIEW
         // configuring navigation title's text color and text
         let navBarTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.accent]
         navigationController?.navigationBar.titleTextAttributes = navBarTextAttributes as [NSAttributedString.Key : Any]
@@ -37,17 +38,29 @@ class WorkoutViewController: UIViewController {
         let addWorkoutButtonImage = UIImage(systemName: "plus", withConfiguration: addWorkoutButtonConfig)!
         addWorkoutButton.createWorkoutButton(UIButton: addWorkoutButton, config: addWorkoutButtonConfig, image: addWorkoutButtonImage)
         
-        
+        // MARK: Fetching and presenting data
         // these statements tell the table view that we want to use our class as the data source and the delegate
         // need to add the protocols to class definition
         workoutTableView.dataSource = self
         // the delegate is telling the table view to use our code instead of the default code (e.g. heightForRowAt, etc)
         workoutTableView.delegate = self
         
+        let defaults = UserDefaults.standard
+        if let savedWorkouts = defaults.object(forKey: "workouts") as? Data {
+            let jsonDecoder = JSONDecoder()
+            
+            do {
+                WorkoutData.workoutModels = try jsonDecoder.decode([WorkoutModel].self, from: savedWorkouts)
+            } catch {
+                // present action controller/view for error loading workouts
+            }
+        }
+        
         WorkoutFunctions.readWorkout { [weak self] in
             // the following code is called when the completion function gets called (i.e. after it retrieves data on the background thread
             self?.workoutTableView.reloadData()
         }
+        
     } // end viewDidLoad
     
     

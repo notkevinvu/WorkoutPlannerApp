@@ -10,7 +10,7 @@
 
 import Foundation
 
-class WorkoutModel {
+class WorkoutModel: Codable {
     // don't need to make title or id optional, will always have a value
     // ex:
     // var needsInitialValue: String // not optional
@@ -18,10 +18,10 @@ class WorkoutModel {
     // var initialValueIsNil: String? // optional
     var title: String
     // don't need to change id after setting it, changed var -> let
-    let id: UUID
+    let id: String
     
     init(title: String) {
-        id = UUID()
+        id = UUID().uuidString
         self.title = title
     }
     

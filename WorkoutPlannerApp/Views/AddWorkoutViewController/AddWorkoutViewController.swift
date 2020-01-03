@@ -82,6 +82,7 @@ class AddWorkoutViewController: UIViewController {
                 workoutTitleTextField.placeholder = "Workout title required"
                 return
             }
+            
             let workoutToSave = WorkoutModel(title: workoutTitle)
             WorkoutFunctions.createWorkout(workoutModel: workoutToSave)
             

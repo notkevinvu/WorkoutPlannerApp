@@ -18,7 +18,7 @@ class ExerciseFunctions {
             // if there are no exercises to display, populate with fake exercises
             if WorkoutData.exerciseModels.count == 0 {
                 WorkoutData.exerciseModels.append(ExerciseModel(title: "Bench press"))
-                WorkoutData.exerciseModels.append(ExerciseModel(title: "Overhead press"))
+                WorkoutData.exerciseModels.append(ExerciseModel(title: "Squat"))
             }
             
             DispatchQueue.main.async {
