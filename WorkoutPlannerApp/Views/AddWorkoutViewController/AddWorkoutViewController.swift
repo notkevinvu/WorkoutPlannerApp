@@ -86,7 +86,7 @@ class AddWorkoutViewController: UIViewController {
             let workoutToSave = WorkoutModel(title: workoutTitle)
             WorkoutFunctions.createWorkout(workoutModel: workoutToSave)
             
-            // since the variable doneSaving can be nil (which would mean there is no code/function associated with it), we must check to see if there is a function/code set to it
+            // since the variable doneSaving can be nil (which would mean there is no code/function associated with it), we must check to see if there is a function/code set to it; if there is a function associated, we run that code
             if let doneSaving = doneSaving {
                 doneSaving()
             }

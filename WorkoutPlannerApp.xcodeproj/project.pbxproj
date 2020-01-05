@@ -31,6 +31,7 @@
 		E8BFB76423B97E74008B4E88 /* AddWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB76323B97E74008B4E88 /* AddWorkoutViewController.swift */; };
 		E8BFB76623B9A458008B4E88 /* AddWorkoutViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8BFB76523B9A458008B4E88 /* AddWorkoutViewController.storyboard */; };
 		E8BFB76E23BA7938008B4E88 /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFB76D23BA7938008B4E88 /* ExerciseViewController.swift */; };
+		E8FB71B523C1ADBF006FC404 /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FB71B423C1ADBF006FC404 /* ExerciseTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		E8BFB76323B97E74008B4E88 /* AddWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutViewController.swift; sourceTree = "<group>"; };
 		E8BFB76523B9A458008B4E88 /* AddWorkoutViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddWorkoutViewController.storyboard; path = WorkoutPlannerApp/Views/AddWorkoutViewController/AddWorkoutViewController.storyboard; sourceTree = SOURCE_ROOT; };
 		E8BFB76D23BA7938008B4E88 /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
+		E8FB71B423C1ADBF006FC404 /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,8 +206,9 @@
 		E8BFB73E23AAAECC008B4E88 /* ExerciseViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E8BFB76D23BA7938008B4E88 /* ExerciseViewController.swift */,
 				E850015323BA959D004C9A9D /* ExerciseViewController.storyboard */,
+				E8BFB76D23BA7938008B4E88 /* ExerciseViewController.swift */,
+				E8FB71B423C1ADBF006FC404 /* ExerciseTableViewCell.swift */,
 			);
 			path = ExerciseViewController;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				E8BFB76423B97E74008B4E88 /* AddWorkoutViewController.swift in Sources */,
 				E85B5C6023A9291800FCC58A /* WorkoutViewController.swift in Sources */,
 				E85B5C2223A7190C00FCC58A /* AppDelegate.swift in Sources */,
+				E8FB71B523C1ADBF006FC404 /* ExerciseTableViewCell.swift in Sources */,
 				E85B5C5823A7F9A800FCC58A /* WorkoutFunctions.swift in Sources */,
 				E85B5C2423A7190C00FCC58A /* SceneDelegate.swift in Sources */,
 				E8BFB73D23AA655C008B4E88 /* WorkoutTableViewCell.swift in Sources */,

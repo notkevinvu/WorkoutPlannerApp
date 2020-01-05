@@ -15,15 +15,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="niW-mC-WxI">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="niW-mC-WxI">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="exerciseCell" rowHeight="100" id="eOG-BC-nwm" customClass="ExerciseTableViewCell" customModule="WorkoutPlannerApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eOG-BC-nwm" id="k90-vP-del">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5t-a2-8VN">
+                                                    <rect key="frame" x="43" y="40" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="I5t-a2-8VN" firstAttribute="leading" secondItem="k90-vP-del" secondAttribute="leadingMargin" constant="23" id="Di4-Fe-ElA"/>
+                                                <constraint firstItem="I5t-a2-8VN" firstAttribute="top" secondItem="k90-vP-del" secondAttribute="topMargin" constant="29" id="ZIx-vY-Qa6"/>
+                                                <constraint firstItem="I5t-a2-8VN" firstAttribute="centerY" secondItem="k90-vP-del" secondAttribute="centerY" id="rIH-3V-qmN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="exerciseTitleLabel" destination="I5t-a2-8VN" id="8DT-Ve-9ky"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="niW-mC-WxI" secondAttribute="bottom" constant="-34" id="FKo-k4-l8l"/>
+                            <constraint firstItem="niW-mC-WxI" firstAttribute="leading" secondItem="ka1-vu-3xl" secondAttribute="leading" id="PnF-dW-ohW"/>
+                            <constraint firstItem="niW-mC-WxI" firstAttribute="top" secondItem="ka1-vu-3xl" secondAttribute="top" id="b9n-rg-Z5Q"/>
+                            <constraint firstItem="niW-mC-WxI" firstAttribute="centerX" secondItem="umy-By-1ph" secondAttribute="centerX" id="jkh-sx-sI7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ka1-vu-3xl"/>
                     </view>
+                    <connections>
+                        <outlet property="exerciseTableView" destination="niW-mC-WxI" id="tdb-t6-DWx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPd-Ue-bx6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

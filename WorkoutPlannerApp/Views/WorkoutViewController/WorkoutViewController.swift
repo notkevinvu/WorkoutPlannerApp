@@ -28,6 +28,10 @@ class WorkoutViewController: UIViewController {
         navigationItem.title = "Workouts"
 //        navigationController?.navigationBar.prefersLargeTitles = true
         
+        // backBarButtonItem needs to be configured for the source view controller, not on the view controller it appears on
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Workouts", style: .done, target: nil, action: nil)
+        navigationItem.backBarButtonItem?.tintColor = Theme.accent
+        
         // configuring color for navigation bar and the table view background
         navigationController?.navigationBar.barTintColor = Theme.background
         workoutTableView.backgroundColor = Theme.background
@@ -76,13 +80,6 @@ class WorkoutViewController: UIViewController {
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // when we select a row in the table view, push the new view controller like so: (don't need to use a segue)
-        if let newExerciseVC = storyboard?.instantiateViewController(withIdentifier: "exerciseViewController") as? ExerciseViewController {
-            navigationController?.pushViewController(newExerciseVC, animated: true)
-        }
-    }
-    
 } // end class
 
 // MARK: Table View configuration
@@ -108,6 +105,14 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // 140 is the height of the cell/its content view
         return 140
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // when we select a row in the table view, push the new view controller like so: (don't need to use a segue)
+        if let newExerciseVC = storyboard?.instantiateViewController(withIdentifier: "exerciseViewController") as? ExerciseViewController {
+            navigationController?.pushViewController(newExerciseVC, animated: true)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
