@@ -82,7 +82,10 @@ class WorkoutViewController: UIViewController {
             navigationController?.pushViewController(newExerciseVC, animated: true)
         }
     }
+    
 } // end class
+
+// MARK: Table View configuration
 
 // moved tableView configuration code into its own extension of the WorkoutViewController class to partition more distinctly
 // alternatively, we could potentially just put this extension in a different file, but it is unnecessary at the moment
@@ -117,8 +120,19 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            WorkoutData.workoutModels.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let confirmDeleteAlert = UIAlertController(title: "Confirm delete", message: "Are you sure you want to delete \(WorkoutData.workoutModels[indexPath.row])?", preferredStyle: .alert)
+            confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            confirmDeleteAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (alert: UIAlertAction!) in
+                // this error:
+                // Cannot convert value of type '() -> ()' to expected argument type '((UIAlertAction) -> Void)?'
+                // means that without the (alert: UIAlertAction!) in
+                // part, this handler needs an input parameter
+                // more specifically, ((UIAlertAction) -> Void)? is saying we need a UIAlertAction as the input parameter (so we specify this by putting (alert: UIAlertAction!) in)
+                WorkoutData.workoutModels.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }))
+            present(confirmDeleteAlert, animated: true)
+            
         }
     }
 
