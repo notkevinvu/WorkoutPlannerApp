@@ -26,17 +26,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5t-a2-8VN">
-                                                    <rect key="frame" x="43" y="40" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5t-a2-8VN">
+                                                    <rect key="frame" x="43" y="40" width="42" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="I5t-a2-8VN" firstAttribute="leading" secondItem="k90-vP-del" secondAttribute="leadingMargin" constant="23" id="Di4-Fe-ElA"/>
-                                                <constraint firstItem="I5t-a2-8VN" firstAttribute="top" secondItem="k90-vP-del" secondAttribute="topMargin" constant="29" id="ZIx-vY-Qa6"/>
-                                                <constraint firstItem="I5t-a2-8VN" firstAttribute="centerY" secondItem="k90-vP-del" secondAttribute="centerY" id="rIH-3V-qmN"/>
+                                                <constraint firstItem="I5t-a2-8VN" firstAttribute="centerY" secondItem="k90-vP-del" secondAttribute="centerY" id="EIG-fZ-gTM"/>
+                                                <constraint firstItem="I5t-a2-8VN" firstAttribute="top" secondItem="k90-vP-del" secondAttribute="topMargin" constant="29" id="Too-MY-pqe"/>
+                                                <constraint firstItem="I5t-a2-8VN" firstAttribute="leading" secondItem="k90-vP-del" secondAttribute="leadingMargin" constant="23" id="zVP-1x-xd8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -48,10 +48,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="niW-mC-WxI" secondAttribute="bottom" constant="-34" id="FKo-k4-l8l"/>
-                            <constraint firstItem="niW-mC-WxI" firstAttribute="leading" secondItem="ka1-vu-3xl" secondAttribute="leading" id="PnF-dW-ohW"/>
-                            <constraint firstItem="niW-mC-WxI" firstAttribute="top" secondItem="ka1-vu-3xl" secondAttribute="top" id="b9n-rg-Z5Q"/>
-                            <constraint firstItem="niW-mC-WxI" firstAttribute="centerX" secondItem="umy-By-1ph" secondAttribute="centerX" id="jkh-sx-sI7"/>
+                            <constraint firstItem="niW-mC-WxI" firstAttribute="centerX" secondItem="umy-By-1ph" secondAttribute="centerX" id="5ay-M7-RaS"/>
+                            <constraint firstItem="niW-mC-WxI" firstAttribute="leading" secondItem="ka1-vu-3xl" secondAttribute="leading" id="Z6I-4N-dvZ"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="niW-mC-WxI" secondAttribute="bottom" constant="-34" id="oFb-3K-50l"/>
+                            <constraint firstItem="niW-mC-WxI" firstAttribute="top" secondItem="ka1-vu-3xl" secondAttribute="top" id="vPe-r7-OFP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ka1-vu-3xl"/>
                     </view>

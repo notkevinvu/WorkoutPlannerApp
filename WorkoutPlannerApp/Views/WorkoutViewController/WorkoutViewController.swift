@@ -36,6 +36,11 @@ class WorkoutViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = Theme.background
         workoutTableView.backgroundColor = Theme.background
         
+        tabBarController?.tabBar.barTintColor = Theme.backgroundContrast
+        tabBarController?.tabBar.tintColor = Theme.accent
+        tabBarController?.tabBar.items?[0].image = UIImage(systemName: "house.fill")
+        tabBarController?.tabBar.items?[0].title = "Workouts"
+        
         // configuring the floating action button to add workouts
         // point size can be used to change the scale of the image we are adding to the button
         let addWorkoutButtonConfig = UIImage.SymbolConfiguration(pointSize: 28, weight: .semibold)
@@ -125,7 +130,7 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let confirmDeleteAlert = UIAlertController(title: "Confirm delete", message: "Are you sure you want to delete \(WorkoutData.workoutModels[indexPath.row])?", preferredStyle: .alert)
+            let confirmDeleteAlert = UIAlertController(title: "Confirm delete", message: "Are you sure you want to delete the workout  \"\(WorkoutData.workoutModels[indexPath.row].title)\"?", preferredStyle: .alert)
             confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
             confirmDeleteAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (alert: UIAlertAction!) in
                 // this error:
