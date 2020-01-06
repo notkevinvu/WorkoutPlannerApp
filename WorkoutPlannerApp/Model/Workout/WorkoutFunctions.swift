@@ -12,13 +12,7 @@ class WorkoutFunctions: NSObject, Codable {
     // the static keyword allows you to call the function without instantiating the class
     static func createWorkout(workoutModel: WorkoutModel) {
         WorkoutData.workoutModels.append(workoutModel)
-        let jsonEncoder = JSONEncoder()
-        if let savedWorkoutData = try? jsonEncoder.encode(WorkoutData.workoutModels) {
-            let workoutsUserDefaults = UserDefaults.standard
-            workoutsUserDefaults.set(savedWorkoutData, forKey: "workouts")
-        } else {
-            // present action controller or page denoting an error in saving/creating a workout
-        }
+        saveWorkouts()
     }
     
     // the parameter "completion: () -> ()" means that the function gets called when we finish getting data on the background thread
@@ -43,7 +37,18 @@ class WorkoutFunctions: NSObject, Codable {
     }
     
     // can either pass in the uuid of the model or the whole model itself
-    static func deleteWorkout(id: UUID) {
-        
+    static func deleteWorkout(index: Int) {
+        WorkoutData.workoutModels.remove(at: index)
+        saveWorkouts()
+    }
+    
+    static func saveWorkouts() {
+        let jsonEncoder = JSONEncoder()
+        if let savedWorkoutData = try? jsonEncoder.encode(WorkoutData.workoutModels) {
+            let workoutsUserDefaults = UserDefaults.standard
+            workoutsUserDefaults.set(savedWorkoutData, forKey: "workouts")
+        } else {
+            // present action controller or page denoting an error in saving/creating a workout
+        }
     }
 }

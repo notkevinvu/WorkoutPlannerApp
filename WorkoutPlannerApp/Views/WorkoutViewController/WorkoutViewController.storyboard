@@ -120,7 +120,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDd-V0-Qgt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1173.913043478261" y="-545.08928571428567"/>
+            <point key="canvasLocation" x="1103" y="-545"/>
         </scene>
         <!--AddWorkoutViewController-->
         <scene sceneID="p9B-1R-igG">
@@ -146,6 +146,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="aZV-sU-tot" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1Rd-ZT-Teg">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

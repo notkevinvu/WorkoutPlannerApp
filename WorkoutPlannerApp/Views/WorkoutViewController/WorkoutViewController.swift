@@ -41,7 +41,7 @@ class WorkoutViewController: UIViewController {
         tabBarController?.tabBar.items?[0].image = UIImage(systemName: "house.fill")
         tabBarController?.tabBar.items?[0].title = "Workouts"
         
-        // configuring the floating action button to add workouts
+        // configuring the add workouts floating action button
         // point size can be used to change the scale of the image we are adding to the button
         let addWorkoutButtonConfig = UIImage.SymbolConfiguration(pointSize: 28, weight: .semibold)
         let addWorkoutButtonImage = UIImage(systemName: "plus", withConfiguration: addWorkoutButtonConfig)!
@@ -138,12 +138,22 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
                 // means that without the (alert: UIAlertAction!) in
                 // part, this handler needs an input parameter
                 // more specifically, ((UIAlertAction) -> Void)? is saying we need a UIAlertAction as the input parameter (so we specify this by putting (alert: UIAlertAction!) in)
-                WorkoutData.workoutModels.remove(at: indexPath.row)
+                WorkoutFunctions.deleteWorkout(index: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }))
             present(confirmDeleteAlert, animated: true)
-            
         }
-    }
+    } // end commit editingStyle:
+    
+//    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let editWorkout = UIContextualAction(style: .normal, title: "Edit") { (contextualAction, view, actionPerformed: (Bool) -> ()) in
+//            if let editVC = self.storyboard?.instantiateViewController(withIdentifier: "editWorkoutViewController") as? EditWorkoutViewController {
+//                self.navigationController?.pushViewController(editVC, animated: true)
+//            }
+//            actionPerformed(true)
+//        }
+//
+//        return UISwipeActionsConfiguration(actions: [editWorkout])
+//    }
 
 }
