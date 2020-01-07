@@ -25,7 +25,6 @@ class ExerciseViewController: UIViewController {
             self?.exerciseTableView.reloadData()
         }
     }
-    
 
     /*
     // MARK: - Navigation

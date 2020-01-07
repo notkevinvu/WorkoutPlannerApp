@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Edit Workout View Controller-->
         <scene sceneID="8aU-pT-8kY">
             <objects>
-                <viewController id="mH1-Lo-Fmx" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editWorkoutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mH1-Lo-Fmx" customClass="EditWorkoutViewController" customModule="WorkoutPlannerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2al-xp-5h3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,11 +36,17 @@
                                         <rect key="frame" x="52" y="112" width="85" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelEdit:" destination="mH1-Lo-Fmx" eventType="touchUpInside" id="8HB-jz-611"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiJ-qq-Lvr">
                                         <rect key="frame" x="237" y="112" width="85" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveEdit:" destination="mH1-Lo-Fmx" eventType="touchUpInside" id="X0C-hj-VYv"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -49,6 +55,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Ojw-dm-y6e"/>
                     </view>
+                    <connections>
+                        <outlet property="editWorkoutCancelButton" destination="Op4-P6-WFl" id="auI-bD-Clj"/>
+                        <outlet property="editWorkoutSaveButton" destination="FiJ-qq-Lvr" id="cmn-GF-qUC"/>
+                        <outlet property="editWorkoutTextField" destination="dIO-1U-Qhr" id="CaW-H3-8r4"/>
+                        <outlet property="editWorkoutTitleLabel" destination="WyL-W2-DOa" id="EaB-o3-lSA"/>
+                        <outlet property="editWorkoutView" destination="aA6-CO-GFZ" id="tej-aa-oFL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SAA-Xk-x1m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

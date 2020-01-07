@@ -10,13 +10,26 @@ import UIKit
 
 class EditWorkoutViewController: UIViewController {
 
+    @IBOutlet weak var editWorkoutView: UIView!
+    @IBOutlet weak var editWorkoutTitleLabel: UILabel!
+    @IBOutlet weak var editWorkoutTextField: UITextField!
+    @IBOutlet weak var editWorkoutCancelButton: UIButton!
+    @IBOutlet weak var editWorkoutSaveButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func cancelEdit(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func saveEdit(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

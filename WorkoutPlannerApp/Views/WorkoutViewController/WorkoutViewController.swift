@@ -115,7 +115,10 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // when we select a row in the table view, push the new view controller like so: (don't need to use a segue)
         if let newExerciseVC = storyboard?.instantiateViewController(withIdentifier: "exerciseViewController") as? ExerciseViewController {
+            hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(newExerciseVC, animated: true)
+            // to show bottom tabbar again, we can set this property back to false after pushing the viewcontroller
+            hidesBottomBarWhenPushed = false
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -145,15 +148,20 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
         }
     } // end commit editingStyle:
     
-//    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let editWorkout = UIContextualAction(style: .normal, title: "Edit") { (contextualAction, view, actionPerformed: (Bool) -> ()) in
-//            if let editVC = self.storyboard?.instantiateViewController(withIdentifier: "editWorkoutViewController") as? EditWorkoutViewController {
-//                self.navigationController?.pushViewController(editVC, animated: true)
-//            }
-//            actionPerformed(true)
-//        }
-//
-//        return UISwipeActionsConfiguration(actions: [editWorkout])
-//    }
+    // may end up removing this and just use the addworkoutviewcontroller again while populating the text field with the workoutModel's title
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editWorkout = UIContextualAction(style: .normal, title: "Edit") { (contextualAction, view, actionPerformed: (Bool) -> ()) in
+            // to present a new VC that has an associated storyboard, must initialize an instance of that VC's storyboard and then instantiate the view controller
+            let editStoryboard = UIStoryboard(name: "EditWorkoutViewController", bundle: nil)
+            if let editVC = editStoryboard.instantiateViewController(withIdentifier: "editWorkoutViewController") as? EditWorkoutViewController {
+                editVC.modalPresentationStyle = .overCurrentContext
+                editVC.modalTransitionStyle = .crossDissolve
+                self.present(editVC, animated: true, completion: nil)
+            }
+            actionPerformed(true)
+        }
+
+        return UISwipeActionsConfiguration(actions: [editWorkout])
+    }
 
 }
