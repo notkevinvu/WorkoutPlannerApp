@@ -151,15 +151,11 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
     // may end up removing this and just use the addworkoutviewcontroller again while populating the text field with the workoutModel's title
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editWorkout = UIContextualAction(style: .normal, title: "Edit") { (contextualAction, view, actionPerformed: (Bool) -> ()) in
-            // to present a new VC that has an associated storyboard, must initialize an instance of that VC's storyboard and then instantiate the view controller
-            let editStoryboard = UIStoryboard(name: "EditWorkoutViewController", bundle: nil)
-            if let editVC = editStoryboard.instantiateViewController(withIdentifier: "editWorkoutViewController") as? EditWorkoutViewController {
-                editVC.modalPresentationStyle = .overCurrentContext
-                editVC.modalTransitionStyle = .crossDissolve
-                self.present(editVC, animated: true, completion: nil)
-            }
+            self.performSegue(withIdentifier: "workoutToAddWorkoutSegue", sender: nil)
             actionPerformed(true)
         }
+        editWorkout.backgroundColor = Theme.mainColor
+        editWorkout.image = UIImage(systemName: "pencil.circle.fill")
 
         return UISwipeActionsConfiguration(actions: [editWorkout])
     }
