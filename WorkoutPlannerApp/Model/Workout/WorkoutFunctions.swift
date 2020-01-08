@@ -32,8 +32,8 @@ class WorkoutFunctions: NSObject, Codable {
         }
     } // end readWorkout()
     
-    static func updateWorkout(workoutModel: WorkoutModel) {
-        
+    static func updateWorkout(workoutModel: WorkoutModel, editedTitle: String) {
+        workoutModel.title = editedTitle
     }
     
     // can either pass in the uuid of the model or the whole model itself

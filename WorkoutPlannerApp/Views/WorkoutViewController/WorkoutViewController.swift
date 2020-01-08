@@ -18,6 +18,11 @@ class WorkoutViewController: UIViewController {
     
     @IBOutlet weak var addWorkoutButton: UIButton!
     
+    // this index is only initialized when the user accesses the edit button through the leading swipe action (which takes in an indexPath, which we can grab the indexPath.row from and serves as our index)
+    // this index will then be assigned to the destination view controller (addworkoutVC)'s workoutIndexToEdit property before the segue moves to that VC
+    // in the addworkoutVC, if this value exists, it autopopulates the text field and sets the isFromEditButton property to true (which is then later checked in the save button function
+    var workoutIndexToEdit: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,6 +81,8 @@ class WorkoutViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "workoutToAddWorkoutSegue" {
             let popup = segue.destination as! AddWorkoutViewController
+            // setting the workoutIndexToEdit in the AddWorkoutViewController to the workoutIndexToEdit here (which should get passed the indexPath.row before performing the segue to addworkoutVC)
+            popup.workoutIndexToEdit = self.workoutIndexToEdit
             // use weak self in to prevent memory leak/strong reference cycles
             // alternatively, we can specify a function elsewhere and set popup.doneSaving to that function, but this is a shorthand method
             // this will only be called when we press the save button, since we only call doneSaving in the save function in AddWorkoutViewController
@@ -151,6 +158,7 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
     // may end up removing this and just use the addworkoutviewcontroller again while populating the text field with the workoutModel's title
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editWorkout = UIContextualAction(style: .normal, title: "Edit") { (contextualAction, view, actionPerformed: (Bool) -> ()) in
+            self.workoutIndexToEdit = indexPath.row
             self.performSegue(withIdentifier: "workoutToAddWorkoutSegue", sender: nil)
             actionPerformed(true)
         }

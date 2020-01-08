@@ -20,6 +20,8 @@ class AddWorkoutViewController: UIViewController {
     // to give a variable a function type, we use () -> (), which are input and output parameters respectively (but we can leave them empty)
     // the actual code will be called in WorkoutViewController
     var doneSaving: (() -> ())?
+    var workoutIndexToEdit: Int?
+    var isFromEditButton: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +56,13 @@ class AddWorkoutViewController: UIViewController {
         
         cancelAddWorkoutButton.titleLabel?.font = UIFont(name: Theme.mainFontName, size: 20)
         saveAddWorkoutButton.titleLabel?.font = UIFont(name: Theme.mainFontName, size: 20)
+        
+        // if workoutIndexToEdit exists, we know we're in editing mode (i.e. this view controller was shown due to user pressing the edit button from the leading swipe action)
+        if let index = workoutIndexToEdit {
+            let workout = WorkoutData.workoutModels[index]
+            workoutTitleTextField.text = workout.title
+            isFromEditButton = true
+        }
     }
     
     @IBAction func cancel(_ sender: UIButton) {
@@ -83,8 +92,15 @@ class AddWorkoutViewController: UIViewController {
                 return
             }
             
-            let workoutToSave = WorkoutModel(title: workoutTitle)
-            WorkoutFunctions.createWorkout(workoutModel: workoutToSave)
+            if isFromEditButton != nil {
+                // isFromEditButton is true/exists, edit the existing workoutmodel rather than add
+                let workoutToEdit = WorkoutData.workoutModels[workoutIndexToEdit!]
+                WorkoutFunctions.updateWorkout(workoutModel: workoutToEdit, editedTitle: workoutTitle)
+            } else {
+                let workoutToSave = WorkoutModel(title: workoutTitle)
+                WorkoutFunctions.createWorkout(workoutModel: workoutToSave)
+            }
+            
             
             // since the variable doneSaving can be nil (which would mean there is no code/function associated with it), we must check to see if there is a function/code set to it; if there is a function associated, we run that code
             if let doneSaving = doneSaving {
