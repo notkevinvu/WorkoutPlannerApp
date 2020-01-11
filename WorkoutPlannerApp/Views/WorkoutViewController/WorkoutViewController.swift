@@ -124,7 +124,7 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
         if let newExerciseVC = storyboard?.instantiateViewController(withIdentifier: "exerciseViewController") as? ExerciseViewController {
             hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(newExerciseVC, animated: true)
-            // to show bottom tabbar again, we can set this property back to false after pushing the viewcontroller
+            // to show bottom tabbar again, we set this property back to false after pushing the viewcontroller
             hidesBottomBarWhenPushed = false
         }
         tableView.deselectRow(at: indexPath, animated: true)
@@ -154,13 +154,14 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
             present(confirmDeleteAlert, animated: true)
         }
     } // end commit editingStyle:
-    
-    // may end up removing this and just use the addworkoutviewcontroller again while populating the text field with the workoutModel's title
+
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editWorkout = UIContextualAction(style: .normal, title: "Edit") { (contextualAction, view, actionPerformed: (Bool) -> ()) in
             self.workoutIndexToEdit = indexPath.row
             self.performSegue(withIdentifier: "workoutToAddWorkoutSegue", sender: nil)
+            // actionPerformed is a bool that we can return true or false based on if we were able to finish the action; if we return true, it hides the swipeaction
             actionPerformed(true)
+            self.workoutIndexToEdit = nil
         }
         editWorkout.backgroundColor = Theme.mainColor
         editWorkout.image = UIImage(systemName: "pencil.circle.fill")
