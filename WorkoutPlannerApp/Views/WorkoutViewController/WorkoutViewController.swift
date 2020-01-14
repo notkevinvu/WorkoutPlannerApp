@@ -27,6 +27,7 @@ class WorkoutViewController: UIViewController {
         super.viewDidLoad()
         
         // MARK: SETTING UP VIEW
+        
         // configuring navigation title's text color and text
         let navBarTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.accent]
         navigationController?.navigationBar.titleTextAttributes = navBarTextAttributes as [NSAttributedString.Key : Any]
@@ -46,15 +47,11 @@ class WorkoutViewController: UIViewController {
         tabBarController?.tabBar.items?[0].image = UIImage(systemName: "house.fill")
         tabBarController?.tabBar.items?[0].title = "Workouts"
         
-        // configuring the add workouts floating action button
-        // point size can be used to change the scale of the image we are adding to the button
-        let addWorkoutButtonConfig = UIImage.SymbolConfiguration(pointSize: 28, weight: .semibold)
-        let addWorkoutButtonImage = UIImage(systemName: "plus", withConfiguration: addWorkoutButtonConfig)!
-        addWorkoutButton.createWorkoutButton(UIButton: addWorkoutButton, config: addWorkoutButtonConfig, image: addWorkoutButtonImage)
+        addWorkoutButton.createWorkoutButton()
         
         // MARK: Fetching and presenting data
         // these statements tell the table view that we want to use our class as the data source and the delegate
-        // need to add the protocols to class definition
+        // need to add the protocols to class definition (since we configure table view data in the extension, we can add protocols there)
         workoutTableView.dataSource = self
         // the delegate is telling the table view to use our code instead of the default code (e.g. heightForRowAt, etc)
         workoutTableView.delegate = self
@@ -89,6 +86,7 @@ class WorkoutViewController: UIViewController {
             popup.doneSaving = { [weak self] in
                 self?.workoutTableView.reloadData()
             }
+            self.workoutIndexToEdit = nil
         }
     }
     
@@ -161,7 +159,7 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
             self.performSegue(withIdentifier: "workoutToAddWorkoutSegue", sender: nil)
             // actionPerformed is a bool that we can return true or false based on if we were able to finish the action; if we return true, it hides the swipeaction
             actionPerformed(true)
-            self.workoutIndexToEdit = nil
+//            self.workoutIndexToEdit = nil
         }
         editWorkout.backgroundColor = Theme.mainColor
         editWorkout.image = UIImage(systemName: "pencil.circle.fill")
