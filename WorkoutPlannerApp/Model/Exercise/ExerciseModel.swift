@@ -17,6 +17,7 @@ import Foundation
 
 class ExerciseModel {
     var title: String
+    var isOpened: Bool? = false
     let id: UUID
     
     // initialize as 0 for now, and create a function that will allow users to change the sets, weight, and reps

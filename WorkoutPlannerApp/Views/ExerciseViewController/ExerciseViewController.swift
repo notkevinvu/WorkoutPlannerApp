@@ -38,6 +38,8 @@ class ExerciseViewController: UIViewController {
 
 }
 
+// MARK: Table View
+
 extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return WorkoutData.exerciseModels.count
@@ -46,7 +48,16 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "exerciseCell") as! ExerciseTableViewCell
         
+        // configuring accessory view with custom accessory color
+        cell.tintColor = Theme.mainColor
+        let customDisclosureImage = UIImage(systemName: "chevron.right.circle.fill")!
+        let disclosureImageFrame = UIImageView(frame: CGRect(x: 0, y: 0, width: ((customDisclosureImage.size.width)), height: ((customDisclosureImage.size.height))))
+        disclosureImageFrame.image = customDisclosureImage
+        cell.accessoryView = disclosureImageFrame
+        
         cell.setup(exerciseModel: WorkoutData.exerciseModels[indexPath.row])
+        
+//        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
         
         return cell
     }
