@@ -25,6 +25,10 @@ class ExerciseViewController: UIViewController {
             self?.exerciseTableView.reloadData()
         }
     }
+    
+    @objc func expandCollapseSection() {
+        print("Tapped")
+    }
 
     /*
     // MARK: - Navigation
@@ -40,7 +44,19 @@ class ExerciseViewController: UIViewController {
 
 // MARK: Table View
 
-extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate {
+extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UITableViewHeaderFooterView()
+        header.textLabel?.text = WorkoutData.exerciseModels[section].title
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(expandCollapseSection))
+        tapRecognizer.delegate = self
+        header.addGestureRecognizer(tapRecognizer)
+        
+        return header
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return WorkoutData.exerciseModels.count
     }

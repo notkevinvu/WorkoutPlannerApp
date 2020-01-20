@@ -40,7 +40,6 @@ class WorkoutViewController: UIViewController {
 //        navigationController?.navigationBar.scrollEdgeAppearance = largeTitleAppearance
         
         
-        
         // backBarButtonItem needs to be configured for the source view controller, not on the view controller it appears on
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Workouts", style: .done, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = Theme.accent
