@@ -61,10 +61,8 @@ class ExerciseViewController: UIViewController {
 
 extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           return WorkoutData.exerciseModels[section].numOfSets
-    }
-       
+    // MARK: Table view Sections
+    
        func numberOfSections(in tableView: UITableView) -> Int {
            return WorkoutData.exerciseModels.count
     }
@@ -77,7 +75,7 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
         
         let header = UITableViewHeaderFooterView()
         
-        header.textLabel?.text = "\(WorkoutData.exerciseModels[section].title) - section: \(section)"
+        header.textLabel?.text = "\(WorkoutData.exerciseModels[section].title) - section: \(section + 1)"
         header.textLabel?.textColor = Theme.accent
         
         // setting up header view/background
@@ -107,6 +105,16 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
         return header
     }
     
+    // MARK: Table view rows
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+           return WorkoutData.exerciseModels[section].numOfSets
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "exerciseCell") as! ExerciseTableViewCell
         
@@ -116,7 +124,5 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
+    
 }

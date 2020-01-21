@@ -24,7 +24,7 @@ class ExerciseTableViewCell: UITableViewCell {
     }
 
     func setup(exerciseModel: ExerciseModel, indexPath: IndexPath) {
-        exerciseTitleLabel.text = "Test: \(exerciseModel.numOfSets)"
+        exerciseTitleLabel.text = "Set #: \(indexPath.row + 1)"
     }
 
 }
