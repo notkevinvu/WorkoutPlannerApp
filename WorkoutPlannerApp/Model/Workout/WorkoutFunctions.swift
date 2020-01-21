@@ -8,7 +8,7 @@
 
 import Foundation
 
-class WorkoutFunctions: NSObject, Codable {
+class WorkoutFunctions {
     // the static keyword allows you to call the function without instantiating the class
     static func createWorkout(workoutModel: WorkoutModel) {
         WorkoutData.workoutModels.append(workoutModel)
@@ -44,9 +44,9 @@ class WorkoutFunctions: NSObject, Codable {
     
     static func saveWorkouts() {
         let jsonEncoder = JSONEncoder()
-        if let savedWorkoutData = try? jsonEncoder.encode(WorkoutData.workoutModels) {
+        if let savedData = try? jsonEncoder.encode(WorkoutData.workoutModels) {
             let workoutsUserDefaults = UserDefaults.standard
-            workoutsUserDefaults.set(savedWorkoutData, forKey: "workouts")
+            workoutsUserDefaults.set(savedData, forKey: "workouts")
         } else {
             // present action controller or page denoting an error in saving/creating a workout
         }

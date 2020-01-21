@@ -15,7 +15,7 @@ import Foundation
 // 3) the weight being done in each set
 // 4) the number of reps per set
 
-class ExerciseModel {
+class ExerciseModel: Codable {
     var title: String
     let id: String
     

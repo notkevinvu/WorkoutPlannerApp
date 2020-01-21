@@ -19,10 +19,11 @@ class ExerciseTableViewCell: UITableViewCell {
         exerciseTitleLabel.textColor = Theme.accent
         backgroundColor = Theme.background
         
+        isUserInteractionEnabled = false
+        
     }
 
-    func setup(exerciseModel: ExerciseModel) {
-        print("\(exerciseModel.numOfSets)")
+    func setup(exerciseModel: ExerciseModel, indexPath: IndexPath) {
         exerciseTitleLabel.text = "Test: \(exerciseModel.numOfSets)"
     }
 

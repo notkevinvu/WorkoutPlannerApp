@@ -19,6 +19,8 @@ class ExerciseFunctions {
             if WorkoutData.exerciseModels.count == 0 {
                 WorkoutData.exerciseModels.append(ExerciseModel(title: "Bench press"))
                 WorkoutData.exerciseModels.append(ExerciseModel(title: "Squat"))
+                WorkoutData.exerciseModels.append(ExerciseModel(title: "Deadlift"))
+                WorkoutData.exerciseModels.append(ExerciseModel(title: "Overhead Press"))
             }
             
             DispatchQueue.main.async {
@@ -31,7 +33,17 @@ class ExerciseFunctions {
         
     }
     
-    static func deleteExercise(id: UUID) {
+    static func deleteExercise(index: Int) {
         
+    }
+    
+    static func saveExercises() {
+        let jsonEncoder = JSONEncoder()
+        if let savedData = try? jsonEncoder.encode(WorkoutData.exerciseModels) {
+            let workoutsUserDefaults = UserDefaults.standard
+            workoutsUserDefaults.set(savedData, forKey: "exercises")
+        } else {
+            // present action controller or page denoting an error in saving/creating a workout
+        }
     }
 }
