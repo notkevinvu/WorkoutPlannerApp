@@ -17,8 +17,7 @@ import Foundation
 
 class ExerciseModel {
     var title: String
-    var isOpened: Bool? = false
-    let id: UUID
+    let id: String
     
     // initialize as 0 for now, and create a function that will allow users to change the sets, weight, and reps
     // the function should be called after instantiating the class (i.e. when adding an exercise, ask for users to name the exercise first - this is the title - then, have a different popup/field that asks for the number of sets/reps and the weight)
@@ -28,7 +27,7 @@ class ExerciseModel {
     
     init(title: String) {
         self.title = title
-        id = UUID()
+        id = UUID().uuidString
         
     }
 }

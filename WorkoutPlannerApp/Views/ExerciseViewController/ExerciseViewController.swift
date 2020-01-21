@@ -8,9 +8,15 @@
 
 import UIKit
 
+//protocol customHeaderDelegate {
+//    func cell(cell: ExerciseTableViewCell, sender: UIGestureRecognizer)
+//}
+
 class ExerciseViewController: UIViewController {
 
     @IBOutlet weak var exerciseTableView: UITableView!
+    
+//    var delegate: customHeaderDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,19 +32,15 @@ class ExerciseViewController: UIViewController {
         }
     }
     
-    @objc func expandCollapseSection() {
-        print("Tapped")
+    @objc func addSetToExercise(sender: UIButton) {
+        // grab the indexPath's section from the UIButton's tag we set when adding the button in viewForHeaderInSection
+        let section = sender.tag
+        WorkoutData.exerciseModels[section].numOfSets += 1
+        print("Tapped + \(sender.tag)")
+        
+        exerciseTableView.reloadData()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -46,34 +48,52 @@ class ExerciseViewController: UIViewController {
 
 extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = UITableViewHeaderFooterView()
-        header.textLabel?.text = WorkoutData.exerciseModels[section].title
-        
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(expandCollapseSection))
-        tapRecognizer.delegate = self
-        header.addGestureRecognizer(tapRecognizer)
-        
-        return header
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+           return WorkoutData.exerciseModels[section].numOfSets
+    }
+       
+       func numberOfSections(in tableView: UITableView) -> Int {
+           return WorkoutData.exerciseModels.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return WorkoutData.exerciseModels.count
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let header = UITableViewHeaderFooterView()
+        
+        header.textLabel?.text = "\(WorkoutData.exerciseModels[section].title) - section: \(section)"
+        header.textLabel?.textColor = Theme.accent
+        
+        // setting up header view/background
+        let headerBackgroundView = UIView(frame: CGRect(x: 0, y: 0, width: header.frame.width, height: header.frame.height))
+        headerBackgroundView.backgroundColor = Theme.backgroundContrast
+        header.backgroundView = headerBackgroundView
+        
+        // add bottom border
+        let topHeaderBorderView = UIView(frame: CGRect(x: 0, y: 49, width: self.view.bounds.width, height: 1))
+        topHeaderBorderView.backgroundColor = Theme.accent
+        header.addSubview(topHeaderBorderView)
+        
+        // add button to add sets to the section
+        let addSetButton = UIButton(frame: CGRect(x: 380, y: 10, width: 30, height: 30))
+        addSetButton.backgroundColor = Theme.backgroundContrast
+        addSetButton.tintColor = Theme.tint
+        addSetButton.setImage(UIImage(systemName: "plus.app.fill"), for: .normal)
+        addSetButton.tag = section
+        addSetButton.addTarget(self, action: #selector(addSetToExercise(sender:)), for: .touchUpInside)
+        header.addSubview(addSetButton)
+        
+        return header
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "exerciseCell") as! ExerciseTableViewCell
         
-        // configuring accessory view with custom accessory color
-        cell.tintColor = Theme.mainColor
-        let customDisclosureImage = UIImage(systemName: "chevron.right.circle.fill")!
-        let disclosureImageFrame = UIImageView(frame: CGRect(x: 0, y: 0, width: ((customDisclosureImage.size.width)), height: ((customDisclosureImage.size.height))))
-        disclosureImageFrame.image = customDisclosureImage
-        cell.accessoryView = disclosureImageFrame
-        
-        cell.setup(exerciseModel: WorkoutData.exerciseModels[indexPath.row])
-        
-//        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        // needs to correspond to the indexPath section, rather than the row
+        cell.setup(exerciseModel: WorkoutData.exerciseModels[indexPath.section])
         
         return cell
     }
