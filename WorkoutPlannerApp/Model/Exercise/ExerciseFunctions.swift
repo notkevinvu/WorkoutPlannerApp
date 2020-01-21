@@ -34,7 +34,13 @@ class ExerciseFunctions {
     }
     
     static func deleteExercise(index: Int) {
-        
+        WorkoutData.exerciseModels.remove(at: index)
+        saveExercises()
+    }
+    
+    static func deleteExerciseSet(index: Int) {
+        WorkoutData.exerciseModels[index].numOfSets -= 1
+        saveExercises()
     }
     
     static func saveExercises() {

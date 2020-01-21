@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+struct ExerciseSetModel {
+    var numOfReps: Int = 0
+    var weightOfSet: Int = 0
+    
+}

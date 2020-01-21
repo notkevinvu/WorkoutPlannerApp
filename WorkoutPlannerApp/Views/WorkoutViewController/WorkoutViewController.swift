@@ -111,6 +111,7 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
     
     // tells the table view what kind of cells to show and configures any properties (REQUIRED for UITableViewDataSource)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "workoutCell") as! WorkoutTableViewCell
         
         cell.setup(workoutModel: WorkoutData.workoutModels[indexPath.row])
@@ -126,11 +127,13 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // when we select a row in the table view, push the new view controller like so: (don't need to use a segue)
         if let newExerciseVC = storyboard?.instantiateViewController(withIdentifier: "exerciseViewController") as? ExerciseViewController {
+            
             hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(newExerciseVC, animated: true)
             // to show bottom tabbar again, we set this property back to false after pushing the viewcontroller
             hidesBottomBarWhenPushed = false
         }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -142,9 +145,11 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
 //        let deleteWorkout = UIContextualAction(style: .destructive, title: "Delete", handler: )
 //    }
     
+    // delete swipe from right
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let confirmDeleteAlert = UIAlertController(title: "Confirm delete", message: "Are you sure you want to delete the workout  \"\(WorkoutData.workoutModels[indexPath.row].title)\"?", preferredStyle: .alert)
+            
             confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
             confirmDeleteAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (alert: UIAlertAction!) in
                 // this error:
@@ -155,18 +160,23 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
                 WorkoutFunctions.deleteWorkout(index: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }))
+            
             present(confirmDeleteAlert, animated: true)
         }
     } // end commit editingStyle:
 
+    // edit swipe from left
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
         let editWorkout = UIContextualAction(style: .normal, title: "Edit") { (contextualAction, view, actionPerformed: (Bool) -> ()) in
+            
             self.workoutIndexToEdit = indexPath.row
             self.performSegue(withIdentifier: "workoutToAddWorkoutSegue", sender: nil)
             // actionPerformed is a bool that we can return true or false based on if we were able to finish the action; if we return true, it hides the swipeaction
             actionPerformed(true)
 //            self.workoutIndexToEdit = nil
         }
+        
         editWorkout.backgroundColor = Theme.mainColor
         editWorkout.image = UIImage(systemName: "pencil.circle.fill")
 

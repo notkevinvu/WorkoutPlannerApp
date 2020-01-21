@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25C2B3B323D7588C00397E52 /* ExerciseSetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2B3B223D7588C00397E52 /* ExerciseSetModel.swift */; };
 		E850015423BA959D004C9A9D /* ExerciseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E850015323BA959D004C9A9D /* ExerciseViewController.storyboard */; };
 		E85B5C2223A7190C00FCC58A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B5C2123A7190C00FCC58A /* AppDelegate.swift */; };
 		E85B5C2423A7190C00FCC58A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B5C2323A7190C00FCC58A /* SceneDelegate.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		25C2B3B223D7588C00397E52 /* ExerciseSetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSetModel.swift; sourceTree = "<group>"; };
 		E850015323BA959D004C9A9D /* ExerciseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExerciseViewController.storyboard; sourceTree = "<group>"; };
 		E85B5C1E23A7190C00FCC58A /* WorkoutPlannerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutPlannerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85B5C2123A7190C00FCC58A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25C2B3B123D7578300397E52 /* ExerciseSet */ = {
+			isa = PBXGroup;
+			children = (
+				25C2B3B223D7588C00397E52 /* ExerciseSetModel.swift */,
+			);
+			path = ExerciseSet;
+			sourceTree = "<group>";
+		};
 		E85B5C1523A7190C00FCC58A = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +182,7 @@
 			children = (
 				E85B5C5923A7FFC900FCC58A /* WorkoutData.swift */,
 				E8BFB73F23AAAF58008B4E88 /* Exercise */,
+				25C2B3B123D7578300397E52 /* ExerciseSet */,
 				E85B5C5223A7F87600FCC58A /* Workout */,
 			);
 			path = Model;
@@ -405,6 +416,7 @@
 				E8BFB75F23B97644008B4E88 /* UIButtonExtension.swift in Sources */,
 				E8BFB74523AABAEF008B4E88 /* ExerciseFunctions.swift in Sources */,
 				E8BFB74B23B53F30008B4E88 /* Theme.swift in Sources */,
+				25C2B3B323D7588C00397E52 /* ExerciseSetModel.swift in Sources */,
 				E8BFB74123AAAF68008B4E88 /* ExerciseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

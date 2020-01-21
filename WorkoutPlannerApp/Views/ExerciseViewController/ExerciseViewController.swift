@@ -75,6 +75,7 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
         
         let header = UITableViewHeaderFooterView()
         
+        // setting header label
         header.textLabel?.text = "\(WorkoutData.exerciseModels[section].title) - section: \(section + 1)"
         header.textLabel?.textColor = Theme.accent
         
@@ -116,12 +117,29 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "exerciseCell") as! ExerciseTableViewCell
         
         // needs to correspond to the indexPath section, rather than the row
         cell.setup(exerciseModel: WorkoutData.exerciseModels[indexPath.section], indexPath: indexPath)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            let confirmDeleteAC = UIAlertController(title: "Confirm delete", message: "Are you sure you want to delete set #\(WorkoutData.exerciseModels[indexPath.row])?", preferredStyle: .alert)
+            
+            confirmDeleteAC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            confirmDeleteAC.addAction((UIAlertAction(title: "Confirm", style: .destructive, handler: { (alert) in
+                ExerciseFunctions.deleteExerciseSet(index: indexPath.section)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            })))
+            
+            present(confirmDeleteAC, animated: true)
+                
+        }
     }
     
     
