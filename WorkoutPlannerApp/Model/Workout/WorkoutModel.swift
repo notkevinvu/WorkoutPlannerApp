@@ -20,6 +20,8 @@ class WorkoutModel: Codable {
     // don't need to change id after setting it, changed var -> let
     let id: String
     
+    var exercisesInWorkout = [ExerciseModel]()
+    
     init(title: String) {
         id = UUID().uuidString
         self.title = title

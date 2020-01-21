@@ -16,14 +16,15 @@ import Foundation
 // 4) the number of reps per set
 
 class ExerciseModel: Codable {
+
     var title: String
     let id: String
     
     // initialize as 0 for now, and create a function that will allow users to change the sets, weight, and reps
     // the function should be called after instantiating the class (i.e. when adding an exercise, ask for users to name the exercise first - this is the title - then, have a different popup/field that asks for the number of sets/reps and the weight)
+    // may not need numOfSets later, just use setsInExercise.count
     var numOfSets: Int = 0
-    var weightOfSet: Int = 0
-    var numOfReps: Int = 0
+    var setsInExercise = [ExerciseSetModel]()
     
     init(title: String) {
         self.title = title

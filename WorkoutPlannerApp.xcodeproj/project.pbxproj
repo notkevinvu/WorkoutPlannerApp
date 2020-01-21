@@ -114,14 +114,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		25C2B3B123D7578300397E52 /* ExerciseSet */ = {
-			isa = PBXGroup;
-			children = (
-				25C2B3B223D7588C00397E52 /* ExerciseSetModel.swift */,
-			);
-			path = ExerciseSet;
-			sourceTree = "<group>";
-		};
 		E85B5C1523A7190C00FCC58A = {
 			isa = PBXGroup;
 			children = (
@@ -182,7 +174,6 @@
 			children = (
 				E85B5C5923A7FFC900FCC58A /* WorkoutData.swift */,
 				E8BFB73F23AAAF58008B4E88 /* Exercise */,
-				25C2B3B123D7578300397E52 /* ExerciseSet */,
 				E85B5C5223A7F87600FCC58A /* Workout */,
 			);
 			path = Model;
@@ -231,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				E8BFB74023AAAF68008B4E88 /* ExerciseModel.swift */,
+				25C2B3B223D7588C00397E52 /* ExerciseSetModel.swift */,
 				E8BFB74423AABAEF008B4E88 /* ExerciseFunctions.swift */,
 			);
 			path = Exercise;

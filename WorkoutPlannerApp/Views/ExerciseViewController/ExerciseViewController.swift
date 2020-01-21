@@ -18,6 +18,9 @@ class ExerciseViewController: UIViewController {
     
     @IBOutlet weak var addExerciseButton: UIButton!
     
+    // when the ExerciseViewController is pushed to front, WorkoutViewController should set this property to the selected row's indexPath.row (thus it will correspond to the workout we selected)
+    var currentWorkoutIndex: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +29,8 @@ class ExerciseViewController: UIViewController {
         
         navigationController?.navigationBar.backgroundColor = Theme.background
         exerciseTableView.backgroundColor = Theme.background
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addExerciseToWorkout))
         
         // grab exercise data from userdefaults
         let defaults = UserDefaults.standard
@@ -44,10 +49,31 @@ class ExerciseViewController: UIViewController {
         }
     }
     
+    @objc func addExerciseToWorkout() {
+        print("Yay")
+        let exerciseTestAdd = ExerciseModel(title: "Test add exercise")
+        WorkoutData.workoutModels[self.currentWorkoutIndex!].exercisesInWorkout.append(exerciseTestAdd)
+        exerciseTableView.reloadData()
+//        let ac = UIAlertController(title: "Add Exercise", message: "Choose a new name for your new exercise", preferredStyle: .alert)
+//
+//        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//        ac.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (alertaction) in
+//            if self.currentWorkoutIndex != nil {
+//                print("Yay")
+//
+//                let exerciseToSave = ExerciseModel(title: "Test exercise add")
+//                ExerciseFunctions.createExercise(exerciseModel: exerciseToSave, index: self.currentWorkoutIndex!)
+//
+//            }
+//        }))
+//        present(ac, animated: true)
+        
+    }
+    
     @objc func addSetToExercise(sender: UIButton) {
         // grab the indexPath's section from the UIButton's tag we set when adding the button in viewForHeaderInSection
         let section = sender.tag
-        WorkoutData.exerciseModels[section].numOfSets += 1
+        WorkoutData.workoutModels[self.currentWorkoutIndex!].exercisesInWorkout[section].numOfSets += 1
         
         ExerciseFunctions.saveExercises()
         
@@ -63,8 +89,8 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
     
     // MARK: Table view Sections
     
-       func numberOfSections(in tableView: UITableView) -> Int {
-           return WorkoutData.exerciseModels.count
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return WorkoutData.workoutModels[self.currentWorkoutIndex!].exercisesInWorkout.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -76,7 +102,8 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
         let header = UITableViewHeaderFooterView()
         
         // setting header label
-        header.textLabel?.text = "\(WorkoutData.exerciseModels[section].title) - section: \(section + 1)"
+//        header.textLabel?.text = "\(WorkoutData.workoutModels[self.currentWorkoutIndex!].exercisesInWorkout[section].title)"
+        header.textLabel?.text = "\(WorkoutData.workoutModels[self.currentWorkoutIndex!].exercisesInWorkout[section].title) - section: \(section + 1)"
         header.textLabel?.textColor = Theme.accent
         
         // setting up header view/background
@@ -113,7 +140,7 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           return WorkoutData.exerciseModels[section].numOfSets
+        return WorkoutData.workoutModels[self.currentWorkoutIndex!].exercisesInWorkout[section].numOfSets
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

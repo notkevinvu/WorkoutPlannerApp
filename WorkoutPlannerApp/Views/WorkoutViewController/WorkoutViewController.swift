@@ -129,6 +129,7 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
         if let newExerciseVC = storyboard?.instantiateViewController(withIdentifier: "exerciseViewController") as? ExerciseViewController {
             
             hidesBottomBarWhenPushed = true
+            newExerciseVC.currentWorkoutIndex = indexPath.row
             navigationController?.pushViewController(newExerciseVC, animated: true)
             // to show bottom tabbar again, we set this property back to false after pushing the viewcontroller
             hidesBottomBarWhenPushed = false

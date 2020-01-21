@@ -9,8 +9,9 @@
 import Foundation
 
 class ExerciseFunctions {
-    static func createExercise(exerciseModel: ExerciseModel) {
-        
+    static func createExercise(exerciseModel: ExerciseModel, index: Int) {
+        WorkoutData.workoutModels[index].exercisesInWorkout.append(exerciseModel)
+        saveExercises()
     }
     
     static func readExercise(completion: @escaping () -> ()) {
@@ -18,9 +19,9 @@ class ExerciseFunctions {
             // if there are no exercises to display, populate with fake exercises
             if WorkoutData.exerciseModels.count == 0 {
                 WorkoutData.exerciseModels.append(ExerciseModel(title: "Bench press"))
-                WorkoutData.exerciseModels.append(ExerciseModel(title: "Squat"))
-                WorkoutData.exerciseModels.append(ExerciseModel(title: "Deadlift"))
-                WorkoutData.exerciseModels.append(ExerciseModel(title: "Overhead Press"))
+//                WorkoutData.exerciseModels.append(ExerciseModel(title: "Squat"))
+//                WorkoutData.exerciseModels.append(ExerciseModel(title: "Deadlift"))
+//                WorkoutData.exerciseModels.append(ExerciseModel(title: "Overhead Press"))
             }
             
             DispatchQueue.main.async {

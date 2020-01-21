@@ -13,8 +13,6 @@ class WorkoutData {
     
     static var exerciseModels = [ExerciseModel]()
     
-//    static var exerciseModelsWithSet = [[ExerciseModel: ExerciseSetModel]]()
-    
     static var exampleExerciseModelNames = [String]()
     
 }

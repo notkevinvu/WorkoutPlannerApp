@@ -8,8 +8,10 @@
 
 import Foundation
 
-struct ExerciseSetModel {
-    var numOfReps: Int = 0
+struct ExerciseSetModel: Codable {
+    
+    var setNumber: Int
     var weightOfSet: Int = 0
+    var numberOfReps: Int = 0
     
 }
