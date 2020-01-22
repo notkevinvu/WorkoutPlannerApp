@@ -32,27 +32,18 @@ class ExerciseViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addExerciseToWorkout))
         
-        // grab exercise data from userdefaults
-        let defaults = UserDefaults.standard
-        if let savedExercises = defaults.object(forKey: "exercises") as? Data {
-            let jsonDecoder = JSONDecoder()
-            
-            do {
-                WorkoutData.exerciseModels = try jsonDecoder.decode([ExerciseModel].self, from: savedExercises)
-            } catch {
-                // present action controller/view for error loading workouts
-            }
-        }
-        
-        ExerciseFunctions.readExercise { [weak self] in
+        // parameter workoutIndex is used both as a unique key to save to user defaults and also to access the correct workoutModels object in array
+        ExerciseFunctions.readExercise(workoutIndex: currentWorkoutIndex!) { [weak self] in
             self?.exerciseTableView.reloadData()
         }
-    }
+        
+    } // end viewDidLoad()
     
     @objc func addExerciseToWorkout() {
-        print("Yay")
+
         let exerciseTestAdd = ExerciseModel(title: "Test add exercise")
         WorkoutData.workoutModels[self.currentWorkoutIndex!].exercisesInWorkout.append(exerciseTestAdd)
+        ExerciseFunctions.saveExercises(workoutIndex: currentWorkoutIndex!)
         exerciseTableView.reloadData()
 //        let ac = UIAlertController(title: "Add Exercise", message: "Choose a new name for your new exercise", preferredStyle: .alert)
 //
@@ -75,7 +66,7 @@ class ExerciseViewController: UIViewController {
         let section = sender.tag
         WorkoutData.workoutModels[self.currentWorkoutIndex!].exercisesInWorkout[section].numOfSets += 1
         
-        ExerciseFunctions.saveExercises()
+        ExerciseFunctions.saveExercises(workoutIndex: currentWorkoutIndex!)
         
         exerciseTableView.reloadData()
     }
@@ -148,20 +139,23 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
         let cell = tableView.dequeueReusableCell(withIdentifier: "exerciseCell") as! ExerciseTableViewCell
         
         // needs to correspond to the indexPath section, rather than the row
-        cell.setup(exerciseModel: WorkoutData.exerciseModels[indexPath.section], indexPath: indexPath)
+        cell.setup(exerciseModel: WorkoutData.workoutModels[currentWorkoutIndex!].exercisesInWorkout[indexPath.section], indexPath: indexPath)
         
         return cell
     }
     
+    // delete exercise set
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            let confirmDeleteAC = UIAlertController(title: "Confirm delete", message: "Are you sure you want to delete set #\(WorkoutData.exerciseModels[indexPath.row])?", preferredStyle: .alert)
+            let confirmDeleteAC = UIAlertController(title: "Confirm delete", message: "Are you sure you want to delete set #\(indexPath.row + 1)?", preferredStyle: .alert)
             
             confirmDeleteAC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            confirmDeleteAC.addAction((UIAlertAction(title: "Confirm", style: .destructive, handler: { (alert) in
-                ExerciseFunctions.deleteExerciseSet(index: indexPath.section)
+            confirmDeleteAC.addAction((UIAlertAction(title: "Confirm", style: .destructive, handler: { [weak self] (alert) in
+                ExerciseFunctions.deleteExerciseSet(workoutIndex: (self?.currentWorkoutIndex)!, exerciseIndex: indexPath.section)
+                ExerciseFunctions.saveExercises(workoutIndex: (self?.currentWorkoutIndex)!)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.reloadData()
             })))
             
             present(confirmDeleteAC, animated: true)
@@ -171,3 +165,4 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
     
     
 }
+

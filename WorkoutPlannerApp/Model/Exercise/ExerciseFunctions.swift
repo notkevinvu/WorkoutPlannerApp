@@ -9,19 +9,24 @@
 import Foundation
 
 class ExerciseFunctions {
-    static func createExercise(exerciseModel: ExerciseModel, index: Int) {
-        WorkoutData.workoutModels[index].exercisesInWorkout.append(exerciseModel)
-        saveExercises()
+    static func createExercise(exerciseModel: ExerciseModel, workoutIndex: Int) {
+        WorkoutData.workoutModels[workoutIndex].exercisesInWorkout.append(exerciseModel)
+//        saveExercises(workoutIndex: index)
     }
     
-    static func readExercise(completion: @escaping () -> ()) {
+    static func readExercise(workoutIndex: Int, completion: @escaping () -> ()) {
         DispatchQueue.global(qos: .userInteractive).async {
-            // if there are no exercises to display, populate with fake exercises
-            if WorkoutData.exerciseModels.count == 0 {
-                WorkoutData.exerciseModels.append(ExerciseModel(title: "Bench press"))
-//                WorkoutData.exerciseModels.append(ExerciseModel(title: "Squat"))
-//                WorkoutData.exerciseModels.append(ExerciseModel(title: "Deadlift"))
-//                WorkoutData.exerciseModels.append(ExerciseModel(title: "Overhead Press"))
+            // loading data from userdefaults with unique key workoutIndex
+            let defaults = UserDefaults.standard
+            if let savedExercises = defaults.object(forKey: "\(workoutIndex)") as? Data {
+                let jsonDecoder = JSONDecoder()
+                
+                do {
+                    WorkoutData.workoutModels[workoutIndex].exercisesInWorkout = try jsonDecoder.decode([ExerciseModel].self, from: savedExercises)
+                } catch {
+                    // present action controller/view for error loading workouts
+                }
+
             }
             
             DispatchQueue.main.async {
@@ -34,21 +39,22 @@ class ExerciseFunctions {
         
     }
     
-    static func deleteExercise(index: Int) {
-        WorkoutData.exerciseModels.remove(at: index)
-        saveExercises()
+    static func deleteExercise(workoutIndex: Int, exerciseIndex: Int) {
+        WorkoutData.exerciseModels.remove(at: exerciseIndex)
+        saveExercises(workoutIndex: workoutIndex)
     }
     
-    static func deleteExerciseSet(index: Int) {
-        WorkoutData.exerciseModels[index].numOfSets -= 1
-        saveExercises()
+    static func deleteExerciseSet(workoutIndex: Int, exerciseIndex: Int) {
+        WorkoutData.workoutModels[workoutIndex].exercisesInWorkout[exerciseIndex].numOfSets -= 1
+        saveExercises(workoutIndex: workoutIndex)
     }
     
-    static func saveExercises() {
+    static func saveExercises(workoutIndex: Int) {
         let jsonEncoder = JSONEncoder()
-        if let savedData = try? jsonEncoder.encode(WorkoutData.exerciseModels) {
+        if let savedData = try? jsonEncoder.encode(WorkoutData.workoutModels[workoutIndex].exercisesInWorkout) {
             let workoutsUserDefaults = UserDefaults.standard
-            workoutsUserDefaults.set(savedData, forKey: "exercises")
+            // needs to save using a unique key, otherwise all workouts will be overwritten with one workout's exercises when loading data
+            workoutsUserDefaults.set(savedData, forKey: "\(workoutIndex)")
         } else {
             // present action controller or page denoting an error in saving/creating a workout
         }
