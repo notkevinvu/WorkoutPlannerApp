@@ -60,6 +60,10 @@ class ExerciseViewController: UIViewController {
             
             // only save if there is text in the text field
             if let exerciseNameToAdd = ac.textFields![0].text {
+                if exerciseNameToAdd == "" {
+                    return
+                }
+                
                 // create exercise model with entered text as title
                 exerciseToAdd = ExerciseModel(title: exerciseNameToAdd)
                 WorkoutData.workoutModels[(self?.currentWorkoutIndex)!].exercisesInWorkout.append(exerciseToAdd!)
