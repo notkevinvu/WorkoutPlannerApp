@@ -19,6 +19,7 @@ class ExerciseViewController: UIViewController {
     @IBOutlet weak var addExerciseButton: UIButton!
     
     // when the ExerciseViewController is pushed to front, WorkoutViewController should set this property to the selected row's indexPath.row (thus it will correspond to the workout we selected)
+    // currentWorkoutIndex is used to save data with a unique key (the index), show the exercises of the workout at the index, add exercises to the workout at index, and show the sets of the exercises of the workout
     var currentWorkoutIndex: Int?
     
     override func viewDidLoad() {
@@ -30,7 +31,8 @@ class ExerciseViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = Theme.background
         exerciseTableView.backgroundColor = Theme.background
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addExerciseToWorkout))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "text.badge.plus"), style: .done, target: self, action: #selector(addExerciseToWorkout))
+        navigationItem.rightBarButtonItem?.tintColor = Theme.tint
         
         // parameter workoutIndex is used both as a unique key to save to user defaults and also to access the correct workoutModels object in array
         ExerciseFunctions.readExercise(workoutIndex: currentWorkoutIndex!) { [weak self] in
@@ -41,23 +43,36 @@ class ExerciseViewController: UIViewController {
     
     @objc func addExerciseToWorkout() {
 
-        let exerciseTestAdd = ExerciseModel(title: "Test add exercise")
-        WorkoutData.workoutModels[self.currentWorkoutIndex!].exercisesInWorkout.append(exerciseTestAdd)
-        ExerciseFunctions.saveExercises(workoutIndex: currentWorkoutIndex!)
-        exerciseTableView.reloadData()
-//        let ac = UIAlertController(title: "Add Exercise", message: "Choose a new name for your new exercise", preferredStyle: .alert)
-//
-//        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//        ac.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (alertaction) in
-//            if self.currentWorkoutIndex != nil {
-//                print("Yay")
-//
-//                let exerciseToSave = ExerciseModel(title: "Test exercise add")
-//                ExerciseFunctions.createExercise(exerciseModel: exerciseToSave, index: self.currentWorkoutIndex!)
-//
-//            }
-//        }))
-//        present(ac, animated: true)
+        var exerciseToAdd: ExerciseModel?
+        
+        let ac = UIAlertController(title: "Add Exercise", message: "Choose a new name for your new exercise", preferredStyle: .alert)
+
+        // configuring cancel button action
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        // add the text field
+        ac.addTextField { (textField: UITextField!) in
+            textField.placeholder = "Enter exercise name..."
+        }
+        
+        // configuring confirm addition of entered text as exercise
+        let confirmAddButton = UIAlertAction(title: "Confirm", style: .default, handler: { [weak self] (alertaction) in
+            
+            // only save if there is text in the text field
+            if let exerciseNameToAdd = ac.textFields![0].text {
+                // create exercise model with entered text as title
+                exerciseToAdd = ExerciseModel(title: exerciseNameToAdd)
+                WorkoutData.workoutModels[(self?.currentWorkoutIndex)!].exercisesInWorkout.append(exerciseToAdd!)
+                ExerciseFunctions.saveExercises(workoutIndex: (self?.currentWorkoutIndex)!)
+                self?.exerciseTableView.reloadData()
+            }
+        })
+        
+        // adding all buttons/actions
+        ac.addAction(cancelButton)
+        ac.addAction(confirmAddButton)
+        
+        present(ac, animated: true)
         
     }
     
