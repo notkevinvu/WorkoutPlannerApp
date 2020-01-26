@@ -11,8 +11,4 @@ import Foundation
 class WorkoutData {
     static var workoutModels = [WorkoutModel]()
     
-    static var exerciseModels = [ExerciseModel]()
-    
-    static var exampleExerciseModelNames = [String]()
-    
 }

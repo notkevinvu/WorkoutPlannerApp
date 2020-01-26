@@ -11,7 +11,7 @@ import Foundation
 class ExerciseFunctions {
     static func createExercise(exerciseModel: ExerciseModel, workoutIndex: Int) {
         WorkoutData.workoutModels[workoutIndex].exercisesInWorkout.append(exerciseModel)
-//        saveExercises(workoutIndex: index)
+        saveExercises(workoutIndex: workoutIndex)
     }
     
     static func readExercise(workoutIndex: Int, completion: @escaping () -> ()) {
@@ -40,7 +40,7 @@ class ExerciseFunctions {
     }
     
     static func deleteExercise(workoutIndex: Int, exerciseIndex: Int) {
-        WorkoutData.exerciseModels.remove(at: exerciseIndex)
+//        WorkoutData.exerciseModels.remove(at: exerciseIndex)
         saveExercises(workoutIndex: workoutIndex)
     }
     
@@ -58,5 +58,9 @@ class ExerciseFunctions {
         } else {
             // present action controller or page denoting an error in saving/creating a workout
         }
+    }
+    
+    static func saveExerciseSets() {
+        
     }
 }

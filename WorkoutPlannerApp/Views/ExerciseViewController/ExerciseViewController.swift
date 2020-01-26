@@ -31,6 +31,8 @@ class ExerciseViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = Theme.background
         exerciseTableView.backgroundColor = Theme.background
         
+        navigationItem.title = "\(WorkoutData.workoutModels[currentWorkoutIndex!].title)"
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "text.badge.plus"), style: .done, target: self, action: #selector(addExerciseToWorkout))
         navigationItem.rightBarButtonItem?.tintColor = Theme.tint
         
