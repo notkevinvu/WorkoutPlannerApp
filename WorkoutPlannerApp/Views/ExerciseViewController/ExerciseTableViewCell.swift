@@ -24,7 +24,11 @@ class ExerciseTableViewCell: UITableViewCell {
     }
 
     func setup(exerciseModel: ExerciseModel, indexPath: IndexPath) {
-        exerciseTitleLabel.text = " \(exerciseModel.title), set #: \(indexPath.row + 1)"
+        
+        let weight = exerciseModel.setsInExercise[indexPath.row].weightOfSet
+        let reps = exerciseModel.setsInExercise[indexPath.row].numberOfReps
+        
+        exerciseTitleLabel.text = "Set #: \(indexPath.row + 1) -- weight: \(weight) --  reps: \(reps)"
     }
 
 }

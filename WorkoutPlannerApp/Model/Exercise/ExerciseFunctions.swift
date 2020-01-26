@@ -14,6 +14,10 @@ class ExerciseFunctions {
         saveExercises(workoutIndex: workoutIndex)
     }
     
+    static func createExerciseSet(exerciseSetModel: ExerciseSetModel, workoutIndex: Int, exerciseIndex: Int) {
+        WorkoutData.workoutModels[workoutIndex].exercisesInWorkout[exerciseIndex].setsInExercise.append(exerciseSetModel)
+    }
+    
     static func readExercise(workoutIndex: Int, completion: @escaping () -> ()) {
         DispatchQueue.global(qos: .userInteractive).async {
             // loading data from userdefaults with unique key workoutIndex
@@ -44,8 +48,11 @@ class ExerciseFunctions {
         saveExercises(workoutIndex: workoutIndex)
     }
     
-    static func deleteExerciseSet(workoutIndex: Int, exerciseIndex: Int) {
-        WorkoutData.workoutModels[workoutIndex].exercisesInWorkout[exerciseIndex].numOfSets -= 1
+    static func deleteExerciseSet(workoutIndex: Int, exerciseIndex: Int, setIndex: Int) {
+        // workoutIndex is passed in when we go from workout screen to exercise screen
+        // exerciseIndex should be the indexPath.section (since we use the section headers to hold our exercises)
+        // setIndex should be the indexPath.row (since we use the table view cells/rows to hold the sets for each exercise)
+        WorkoutData.workoutModels[workoutIndex].exercisesInWorkout[exerciseIndex].setsInExercise.remove(at: setIndex)
         saveExercises(workoutIndex: workoutIndex)
     }
     
@@ -58,9 +65,5 @@ class ExerciseFunctions {
         } else {
             // present action controller or page denoting an error in saving/creating a workout
         }
-    }
-    
-    static func saveExerciseSets() {
-        
     }
 }

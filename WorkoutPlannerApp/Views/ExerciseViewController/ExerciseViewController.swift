@@ -85,21 +85,46 @@ class ExerciseViewController: UIViewController {
     @objc func addSetToExercise(sender: UIButton) {
         // grab the indexPath's section from the UIButton's tag we set when adding the button in viewForHeaderInSection
         let section = sender.tag
-        WorkoutData.workoutModels[self.currentWorkoutIndex!].exercisesInWorkout[section].numOfSets += 1
         
-        ExerciseFunctions.saveExercises(workoutIndex: currentWorkoutIndex!)
+        let setAC = UIAlertController(title: "Add set", message: "Please enter the weight and number of reps for the set.", preferredStyle: .alert)
         
-        exerciseTableView.reloadData()
+        setAC.addTextField { (weightTextField) in
+            weightTextField.placeholder = "Enter weight of set..."
+            weightTextField.textAlignment = .center
+        }
+        
+        setAC.addTextField { (repsTextField) in
+            repsTextField.placeholder = "Enter number of reps"
+            repsTextField.textAlignment = .center
+        }
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let saveButton = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
+            if let weight: Int = Int((setAC.textFields?[0].text)!) {
+                if let reps: Int = Int((setAC.textFields?[1].text)!) {
+                    let exerciseSet = ExerciseSetModel(weightOfSet: weight, numberOfReps: reps)
+                    
+                    ExerciseFunctions.createExerciseSet(exerciseSetModel: exerciseSet, workoutIndex: (self?.currentWorkoutIndex)!, exerciseIndex: section)
+                    
+                    ExerciseFunctions.saveExercises(workoutIndex: (self?.currentWorkoutIndex)!)
+                    self?.exerciseTableView.reloadData()
+                }
+            }
+        }
+        
+        setAC.addAction(cancelButton)
+        setAC.addAction(saveButton)
+        
+        present(setAC, animated: true)
     }
-
-
 }
 
 // MARK: Table View
 
 extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
-    // MARK: Table view Sections
+    // MARK: Table view Sections (exercises)
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return WorkoutData.workoutModels[self.currentWorkoutIndex!].exercisesInWorkout.count
@@ -145,14 +170,14 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
         return header
     }
     
-    // MARK: Table view rows
+    // MARK: Table view rows (sets)
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return WorkoutData.workoutModels[self.currentWorkoutIndex!].exercisesInWorkout[section].numOfSets
+        return WorkoutData.workoutModels[self.currentWorkoutIndex!].exercisesInWorkout[section].setsInExercise.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -173,7 +198,7 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
             
             confirmDeleteAC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             confirmDeleteAC.addAction((UIAlertAction(title: "Confirm", style: .destructive, handler: { [weak self] (alert) in
-                ExerciseFunctions.deleteExerciseSet(workoutIndex: (self?.currentWorkoutIndex)!, exerciseIndex: indexPath.section)
+                ExerciseFunctions.deleteExerciseSet(workoutIndex: (self?.currentWorkoutIndex)!, exerciseIndex: indexPath.section, setIndex: indexPath.row)
                 ExerciseFunctions.saveExercises(workoutIndex: (self?.currentWorkoutIndex)!)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 tableView.reloadData()

@@ -9,8 +9,7 @@
 import Foundation
 
 struct ExerciseSetModel: Codable {
-    
-    var setNumber: Int
+
     var weightOfSet: Int = 0
     var numberOfReps: Int = 0
     
