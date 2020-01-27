@@ -25,16 +25,11 @@ class ExerciseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        exerciseTableView.delegate = self
-        exerciseTableView.dataSource = self
+        setDelegateAndDataSource()
         
-        navigationController?.navigationBar.backgroundColor = Theme.background
-        exerciseTableView.backgroundColor = Theme.background
+        configureNavigationObjects()
         
-        navigationItem.title = "\(WorkoutData.workoutModels[currentWorkoutIndex!].title)"
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "text.badge.plus"), style: .done, target: self, action: #selector(addExerciseToWorkout))
-        navigationItem.rightBarButtonItem?.tintColor = Theme.tint
+        configureTableViewTheme()
         
         // parameter workoutIndex is used both as a unique key to save to user defaults and also to access the correct workoutModels object in array
         ExerciseFunctions.readExercise(workoutIndex: currentWorkoutIndex!) { [weak self] in
@@ -42,6 +37,22 @@ class ExerciseViewController: UIViewController {
         }
         
     } // end viewDidLoad()
+    
+    func setDelegateAndDataSource() {
+        exerciseTableView.delegate = self
+        exerciseTableView.dataSource = self
+    }
+    
+    func configureNavigationObjects() {
+        navigationController?.navigationBar.backgroundColor = Theme.background
+        navigationItem.title = "\(WorkoutData.workoutModels[currentWorkoutIndex!].title)"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "text.badge.plus"), style: .done, target: self, action: #selector(addExerciseToWorkout))
+        navigationItem.rightBarButtonItem?.tintColor = Theme.tint
+    }
+    
+    func configureTableViewTheme() {
+        exerciseTableView.backgroundColor = Theme.background
+    }
     
     @objc func addExerciseToWorkout() {
 
@@ -55,6 +66,7 @@ class ExerciseViewController: UIViewController {
         // add the text field
         ac.addTextField { (textField: UITextField!) in
             textField.placeholder = "Enter exercise name..."
+            textField.textAlignment = .center
         }
         
         // configuring confirm addition of entered text as exercise
@@ -101,8 +113,13 @@ class ExerciseViewController: UIViewController {
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         let saveButton = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
-            if let weight: Int = Int((setAC.textFields?[0].text)!) {
-                if let reps: Int = Int((setAC.textFields?[1].text)!) {
+            
+            // remove leading/trailing spaces
+            let weightString = setAC.textFields?[0].text?.trimmingCharacters(in: .whitespaces)
+            let repsString = setAC.textFields?[1].text?.trimmingCharacters(in: .whitespaces)
+            
+            if let weight = Double(weightString!) {
+                if let reps = Int(repsString!) {
                     let exerciseSet = ExerciseSetModel(weightOfSet: weight, numberOfReps: reps)
                     
                     ExerciseFunctions.createExerciseSet(exerciseSetModel: exerciseSet, workoutIndex: (self?.currentWorkoutIndex)!, exerciseIndex: section)
