@@ -46,7 +46,7 @@ class ExerciseViewController: UIViewController {
     func configureNavigationObjects() {
         navigationController?.navigationBar.backgroundColor = Theme.background
         navigationItem.title = "\(WorkoutData.workoutModels[currentWorkoutIndex!].title)"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "text.badge.plus"), style: .done, target: self, action: #selector(addExerciseToWorkout))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.square.fill.on.square.fill"), style: .done, target: self, action: #selector(addExerciseToWorkout))
         navigationItem.rightBarButtonItem?.tintColor = Theme.tint
     }
     
@@ -161,8 +161,6 @@ class ExerciseViewController: UIViewController {
     }
 }
 
-// MARK: Table View
-
 extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
     // MARK: Table view Sections (exercises)
@@ -209,6 +207,7 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
         addSetButton.addTarget(self, action: #selector(addSetToExercise(sender:)), for: .touchUpInside)
         header.addSubview(addSetButton)
         
+        // long press gesture to delete exercise/section
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressToDeleteExercise(sender:)))
         header.addGestureRecognizer(longPressGesture)
         
@@ -256,6 +255,53 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
                 
         }
     }
+    
+    // edit exercise sets
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let swipeAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, actionPerformed: (Bool) -> ()) in
+            
+            let editSetAC = UIAlertController(title: "Edit Set", message: nil, preferredStyle: .alert)
+            
+            editSetAC.addTextField { [weak self] (weightTextField) in
+                weightTextField.textAlignment = .center
+                weightTextField.placeholder = "Edit weight of set..."
+                weightTextField.text = "\(WorkoutData.workoutModels[(self?.currentWorkoutIndex)!].exercisesInWorkout[indexPath.section].setsInExercise[indexPath.row].weightOfSet)"
+            }
+            
+            editSetAC.addTextField { [weak self] (repsTextField) in
+                repsTextField.textAlignment = .center
+                repsTextField.placeholder = "Edit number of reps..."
+                repsTextField.text = "\(WorkoutData.workoutModels[(self?.currentWorkoutIndex)!].exercisesInWorkout[indexPath.section].setsInExercise[indexPath.row].numberOfReps)"
+            }
+            
+            let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            let saveButton = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
+                let weightString = editSetAC.textFields?[0].text?.trimmingCharacters(in: .whitespaces)
+                let repsString = editSetAC.textFields?[1].text?.trimmingCharacters(in: .whitespaces)
+                
+                if let weight = Double(weightString!) {
+                    if let reps = Int(repsString!) {
+                        WorkoutData.workoutModels[(self?.currentWorkoutIndex)!].exercisesInWorkout[indexPath.section].setsInExercise[indexPath.row].weightOfSet = weight
+                        
+                        WorkoutData.workoutModels[(self?.currentWorkoutIndex)!].exercisesInWorkout[indexPath.section].setsInExercise[indexPath.row].numberOfReps = reps
+                        
+                        ExerciseFunctions.saveExercises(workoutIndex: (self?.currentWorkoutIndex)!)
+                        self?.exerciseTableView.reloadData()
+                    }
+                }
+            }
+            
+            editSetAC.addAction(cancelButton)
+            editSetAC.addAction(saveButton)
+            self.present(editSetAC, animated: true)
+            
+            actionPerformed(true)
+        }
+        
+        return UISwipeActionsConfiguration(actions: [swipeAction])
+    } // end leadingSwipeActionConfiguration
+    
     
     
 }

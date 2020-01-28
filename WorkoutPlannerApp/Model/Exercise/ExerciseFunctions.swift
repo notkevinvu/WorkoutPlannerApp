@@ -39,8 +39,8 @@ class ExerciseFunctions {
         }
     }
     
-    static func updateExercise(exerciseModel: ExerciseModel) {
-        
+    static func updateExercise(exerciseModel: ExerciseModel, workoutIndex: Int) {
+        saveExercises(workoutIndex: workoutIndex)
     }
     
     static func deleteExercise(workoutIndex: Int, exerciseIndex: Int) {

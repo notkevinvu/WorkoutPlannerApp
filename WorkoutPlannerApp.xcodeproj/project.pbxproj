@@ -114,6 +114,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25C2B3BC23E08B6800397E52 /* WorkoutSchedulerViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WorkoutSchedulerViewController;
+			sourceTree = "<group>";
+		};
 		E85B5C1523A7190C00FCC58A = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +198,7 @@
 		E85B5C5B23A9289200FCC58A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				25C2B3BC23E08B6800397E52 /* WorkoutSchedulerViewController */,
 				E8BFB76223B97E4A008B4E88 /* AddWorkoutViewController */,
 				E8BFB73E23AAAECC008B4E88 /* ExerciseViewController */,
 				E85B5C5C23A9289F00FCC58A /* WorkoutViewController */,

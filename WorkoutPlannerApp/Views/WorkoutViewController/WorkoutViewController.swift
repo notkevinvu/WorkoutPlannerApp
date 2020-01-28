@@ -164,7 +164,6 @@ extension WorkoutViewController: UITableViewDataSource, UITableViewDelegate {
             self.performSegue(withIdentifier: "workoutToAddWorkoutSegue", sender: nil)
             // actionPerformed is a bool that we can return true or false based on if we were able to finish the action; if we return true, it hides the swipeaction
             actionPerformed(true)
-//            self.workoutIndexToEdit = nil
         }
         
         editWorkout.backgroundColor = Theme.mainColor
