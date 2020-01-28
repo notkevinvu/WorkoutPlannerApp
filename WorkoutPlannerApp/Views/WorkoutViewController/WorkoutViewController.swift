@@ -62,17 +62,6 @@ class WorkoutViewController: UIViewController {
         // the delegate is telling the table view to use our code instead of the default code (e.g. heightForRowAt, etc)
         workoutTableView.delegate = self
         
-        let defaults = UserDefaults.standard
-        if let savedWorkouts = defaults.object(forKey: "workouts") as? Data {
-            let jsonDecoder = JSONDecoder()
-            
-            do {
-                WorkoutData.workoutModels = try jsonDecoder.decode([WorkoutModel].self, from: savedWorkouts)
-            } catch {
-                // present action controller/view for error loading workouts
-            }
-        }
-        
         WorkoutFunctions.readWorkout { [weak self] in
             // the following code is called when the completion function gets called (i.e. after it retrieves data on the background thread
             self?.workoutTableView.reloadData()
@@ -84,7 +73,7 @@ class WorkoutViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "workoutToAddWorkoutSegue" {
             let popup = segue.destination as! AddWorkoutViewController
-            // setting the workoutIndexToEdit in the AddWorkoutViewController to the workoutIndexToEdit here (which should get passed the indexPath.row before performing the segue to addworkoutVC)
+            // passing workoutIndexToEdit (the indexPath.row int) to the popup
             popup.workoutIndexToEdit = self.workoutIndexToEdit
             // use weak self in to prevent memory leak/strong reference cycles
             // alternatively, we can specify a function elsewhere and set popup.doneSaving to that function, but this is a shorthand method

@@ -44,7 +44,7 @@ class ExerciseFunctions {
     }
     
     static func deleteExercise(workoutIndex: Int, exerciseIndex: Int) {
-//        WorkoutData.exerciseModels.remove(at: exerciseIndex)
+        WorkoutData.workoutModels[workoutIndex].exercisesInWorkout.remove(at: exerciseIndex)
         saveExercises(workoutIndex: workoutIndex)
     }
     

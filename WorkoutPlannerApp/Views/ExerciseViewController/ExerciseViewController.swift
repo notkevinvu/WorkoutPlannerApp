@@ -134,6 +134,30 @@ class ExerciseViewController: UIViewController {
         setAC.addAction(saveButton)
         
         present(setAC, animated: true)
+    } // end addSetToExercise
+    
+    @objc func longPressToDeleteExercise(sender: UILongPressGestureRecognizer) {
+        let section = (sender.view?.tag)!
+        
+        let deleteAC = UIAlertController(title: "Delete exercise?", message: "Do you wish to delete exercise \"\(WorkoutData.workoutModels[currentWorkoutIndex!].exercisesInWorkout[section])?\"", preferredStyle: .alert)
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let confirmButton = UIAlertAction(title: "Confirm", style: .destructive) { [weak self] (confirmAC) in
+            ExerciseFunctions.deleteExercise(workoutIndex: (self?.currentWorkoutIndex)!, exerciseIndex: section)
+            
+            var indexSet = IndexSet()
+            indexSet.insert(section)
+            
+            self?.exerciseTableView.deleteSections(indexSet, with: .automatic)
+            self?.exerciseTableView.reloadData()
+        }
+        
+        deleteAC.addAction(cancelButton)
+        deleteAC.addAction(confirmButton)
+        
+        present(deleteAC, animated: true)
+        
     }
 }
 
@@ -159,6 +183,7 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
 //        header.textLabel?.text = "\(WorkoutData.workoutModels[self.currentWorkoutIndex!].exercisesInWorkout[section].title)"
         header.textLabel?.text = "\(WorkoutData.workoutModels[self.currentWorkoutIndex!].exercisesInWorkout[section].title) - section: \(section + 1)"
         header.textLabel?.textColor = Theme.accent
+        header.tag = section
         
         // setting up header view/background
         let headerBackgroundView = UIView(frame: CGRect(x: 0, y: 0, width: header.frame.width, height: header.frame.height))
@@ -183,6 +208,9 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
         addSetButton.tag = section
         addSetButton.addTarget(self, action: #selector(addSetToExercise(sender:)), for: .touchUpInside)
         header.addSubview(addSetButton)
+        
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressToDeleteExercise(sender:)))
+        header.addGestureRecognizer(longPressGesture)
         
         return header
     }
@@ -215,8 +243,11 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
             
             confirmDeleteAC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             confirmDeleteAC.addAction((UIAlertAction(title: "Confirm", style: .destructive, handler: { [weak self] (alert) in
+                
                 ExerciseFunctions.deleteExerciseSet(workoutIndex: (self?.currentWorkoutIndex)!, exerciseIndex: indexPath.section, setIndex: indexPath.row)
+                
                 ExerciseFunctions.saveExercises(workoutIndex: (self?.currentWorkoutIndex)!)
+                
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 tableView.reloadData()
             })))

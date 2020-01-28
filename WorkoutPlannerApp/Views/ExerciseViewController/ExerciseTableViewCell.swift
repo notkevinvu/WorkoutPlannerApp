@@ -28,7 +28,7 @@ class ExerciseTableViewCell: UITableViewCell {
         let weight = exerciseModel.setsInExercise[indexPath.row].weightOfSet
         let reps = exerciseModel.setsInExercise[indexPath.row].numberOfReps
         
-        exerciseTitleLabel.text = "Set #: \(indexPath.row + 1) -- weight: \(weight) --  reps: \(reps)"
+        exerciseTitleLabel.text = "Set #: \(indexPath.row + 1) | weight: \(weight) |  reps: \(reps)"
     }
 
 }

@@ -26,6 +26,17 @@ class WorkoutFunctions {
                 WorkoutData.workoutModels.append(WorkoutModel(title: "Legs"))
             }
             
+            let defaults = UserDefaults.standard
+            if let savedWorkouts = defaults.object(forKey: "workouts") as? Data {
+                let jsonDecoder = JSONDecoder()
+                
+                do {
+                    WorkoutData.workoutModels = try jsonDecoder.decode([WorkoutModel].self, from: savedWorkouts)
+                } catch {
+                    // present action controller/view for error loading workouts
+                }
+            }
+            
             DispatchQueue.main.async {
                 completion()
             }
