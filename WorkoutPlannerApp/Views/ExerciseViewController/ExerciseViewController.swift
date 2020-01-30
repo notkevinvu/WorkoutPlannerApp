@@ -20,19 +20,19 @@ class ExerciseViewController: UIViewController {
     
     // when the ExerciseViewController is pushed to front, WorkoutViewController should set this property to the selected row's indexPath.row (thus it will correspond to the workout we selected)
     // currentWorkoutIndex is used to save data with a unique key (the index), show the exercises of the workout at the index, add exercises to the workout at index, and show the sets of the exercises of the workout
-    var currentWorkoutIndex: Int?
+    var currentWorkoutIndex: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setDelegateAndDataSource()
-        
+         
         configureNavigationObjects()
         
         configureTableViewTheme()
         
         // parameter workoutIndex is used both as a unique key to save to user defaults and also to access the correct workoutModels object in array
-        ExerciseFunctions.readExercise(workoutIndex: currentWorkoutIndex!) { [weak self] in
+        ExerciseFunctions.readExercise(workoutIndex: currentWorkoutIndex) { [weak self] in
             self?.exerciseTableView.reloadData()
         }
         
@@ -72,6 +72,8 @@ class ExerciseViewController: UIViewController {
         // configuring confirm addition of entered text as exercise
         let confirmAddButton = UIAlertAction(title: "Confirm", style: .default, handler: { [weak self] (alertaction) in
             
+            guard let self = self else { return }
+            
             // only save if there is text in the text field
             if let exerciseNameToAdd = ac.textFields![0].text {
                 if exerciseNameToAdd == "" {
@@ -80,9 +82,9 @@ class ExerciseViewController: UIViewController {
                 
                 // create exercise model with entered text as title
                 exerciseToAdd = ExerciseModel(title: exerciseNameToAdd)
-                WorkoutData.workoutModels[(self?.currentWorkoutIndex)!].exercisesInWorkout.append(exerciseToAdd!)
-                ExerciseFunctions.saveExercises(workoutIndex: (self?.currentWorkoutIndex)!)
-                self?.exerciseTableView.reloadData()
+                WorkoutData.workoutModels[(self.currentWorkoutIndex)].exercisesInWorkout.append(exerciseToAdd!)
+                ExerciseFunctions.saveExercises(workoutIndex: (self.currentWorkoutIndex))
+                self.exerciseTableView.reloadData()
             }
         })
         
@@ -114,6 +116,8 @@ class ExerciseViewController: UIViewController {
         
         let saveButton = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
             
+            guard let self = self else { return }
+            
             // remove leading/trailing spaces
             let weightString = setAC.textFields?[0].text?.trimmingCharacters(in: .whitespaces)
             let repsString = setAC.textFields?[1].text?.trimmingCharacters(in: .whitespaces)
@@ -122,10 +126,10 @@ class ExerciseViewController: UIViewController {
                 if let reps = Int(repsString!) {
                     let exerciseSet = ExerciseSetModel(weightOfSet: weight, numberOfReps: reps)
                     
-                    ExerciseFunctions.createExerciseSet(exerciseSetModel: exerciseSet, workoutIndex: (self?.currentWorkoutIndex)!, exerciseIndex: section)
+                    ExerciseFunctions.createExerciseSet(exerciseSetModel: exerciseSet, workoutIndex: self.currentWorkoutIndex, exerciseIndex: section)
                     
-                    ExerciseFunctions.saveExercises(workoutIndex: (self?.currentWorkoutIndex)!)
-                    self?.exerciseTableView.reloadData()
+                    ExerciseFunctions.saveExercises(workoutIndex: self.currentWorkoutIndex)
+                    self.exerciseTableView.reloadData()
                 }
             }
         }
@@ -144,13 +148,16 @@ class ExerciseViewController: UIViewController {
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         let confirmButton = UIAlertAction(title: "Confirm", style: .destructive) { [weak self] (confirmAC) in
-            ExerciseFunctions.deleteExercise(workoutIndex: (self?.currentWorkoutIndex)!, exerciseIndex: section)
+            
+            guard let self = self else { return }
+            
+            ExerciseFunctions.deleteExercise(workoutIndex: (self.currentWorkoutIndex), exerciseIndex: section)
             
             var indexSet = IndexSet()
             indexSet.insert(section)
             
-            self?.exerciseTableView.deleteSections(indexSet, with: .automatic)
-            self?.exerciseTableView.reloadData()
+            self.exerciseTableView.deleteSections(indexSet, with: .automatic)
+            self.exerciseTableView.reloadData()
         }
         
         deleteAC.addAction(cancelButton)
@@ -243,9 +250,11 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
             confirmDeleteAC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             confirmDeleteAC.addAction((UIAlertAction(title: "Confirm", style: .destructive, handler: { [weak self] (alert) in
                 
-                ExerciseFunctions.deleteExerciseSet(workoutIndex: (self?.currentWorkoutIndex)!, exerciseIndex: indexPath.section, setIndex: indexPath.row)
+                guard let self = self else { return }
                 
-                ExerciseFunctions.saveExercises(workoutIndex: (self?.currentWorkoutIndex)!)
+                ExerciseFunctions.deleteExerciseSet(workoutIndex: self.currentWorkoutIndex, exerciseIndex: indexPath.section, setIndex: indexPath.row)
+                
+                ExerciseFunctions.saveExercises(workoutIndex: self.currentWorkoutIndex)
                 
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 tableView.reloadData()
@@ -263,31 +272,39 @@ extension ExerciseViewController: UITableViewDataSource, UITableViewDelegate, UI
             let editSetAC = UIAlertController(title: "Edit Set", message: nil, preferredStyle: .alert)
             
             editSetAC.addTextField { [weak self] (weightTextField) in
-                weightTextField.textAlignment = .center
-                weightTextField.placeholder = "Edit weight of set..."
-                weightTextField.text = "\(WorkoutData.workoutModels[(self?.currentWorkoutIndex)!].exercisesInWorkout[indexPath.section].setsInExercise[indexPath.row].weightOfSet)"
+                if let self = self {
+                    weightTextField.textAlignment = .center
+                    weightTextField.placeholder = "Edit weight of set..."
+                    weightTextField.text = "\(WorkoutData.workoutModels[self.currentWorkoutIndex].exercisesInWorkout[indexPath.section].setsInExercise[indexPath.row].weightOfSet)"
+                }
             }
             
             editSetAC.addTextField { [weak self] (repsTextField) in
-                repsTextField.textAlignment = .center
-                repsTextField.placeholder = "Edit number of reps..."
-                repsTextField.text = "\(WorkoutData.workoutModels[(self?.currentWorkoutIndex)!].exercisesInWorkout[indexPath.section].setsInExercise[indexPath.row].numberOfReps)"
+                if let self = self {
+                    repsTextField.textAlignment = .center
+                    repsTextField.placeholder = "Edit number of reps..."
+                    repsTextField.text = "\(WorkoutData.workoutModels[self.currentWorkoutIndex].exercisesInWorkout[indexPath.section].setsInExercise[indexPath.row].numberOfReps)"
+                }
             }
             
             let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             
             let saveButton = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
-                let weightString = editSetAC.textFields?[0].text?.trimmingCharacters(in: .whitespaces)
-                let repsString = editSetAC.textFields?[1].text?.trimmingCharacters(in: .whitespaces)
                 
-                if let weight = Double(weightString!) {
-                    if let reps = Int(repsString!) {
-                        WorkoutData.workoutModels[(self?.currentWorkoutIndex)!].exercisesInWorkout[indexPath.section].setsInExercise[indexPath.row].weightOfSet = weight
+                guard let self = self else { return }
+                
+                if let weightString = editSetAC.textFields?[0].text?.trimmingCharacters(in: .whitespaces) {
+                    if let repsString = editSetAC.textFields?[1].text?.trimmingCharacters(in: .whitespaces) {
                         
-                        WorkoutData.workoutModels[(self?.currentWorkoutIndex)!].exercisesInWorkout[indexPath.section].setsInExercise[indexPath.row].numberOfReps = reps
+                        guard let weight = Double(weightString) else { return }
+                        guard let reps = Int(repsString) else { return }
                         
-                        ExerciseFunctions.saveExercises(workoutIndex: (self?.currentWorkoutIndex)!)
-                        self?.exerciseTableView.reloadData()
+                        WorkoutData.workoutModels[self.currentWorkoutIndex].exercisesInWorkout[indexPath.section].setsInExercise[indexPath.row].weightOfSet = weight
+                        
+                        WorkoutData.workoutModels[self.currentWorkoutIndex].exercisesInWorkout[indexPath.section].setsInExercise[indexPath.row].numberOfReps = reps
+                        
+                        ExerciseFunctions.saveExercises(workoutIndex: self.currentWorkoutIndex)
+                        self.exerciseTableView.reloadData()
                     }
                 }
             }
